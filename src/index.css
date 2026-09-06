@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-size: 18px; /* Tăng kích thước font gốc từ 16px lên 18px cho học sinh tiểu học dễ đọc */
+  }
+
+  body {
+    font-family: 'Quicksand', 'Nunito', sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+  }
+
+  /* Nút bấm cảm ứng thân thiện cho học sinh */
+  button {
+    min-height: 48px;
+    touch-action: manipulation;
+  }
+}
+
+/* Tùy biến thanh cuộn tròn dễ thương */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FEF3C7;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #F59E0B;
+  border-radius: 9999px;
+  border: 2px solid #FEF3C7;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #D97706;
+}
