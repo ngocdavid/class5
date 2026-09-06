@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Lesson, Question } from '../../types';
 import { KaTeXView } from '../common/KaTeXView';
 import { LessonIllustration } from '../common/LessonIllustration';
@@ -25,6 +25,17 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
 
   const questions = lesson.practiceQuestions;
   const currentQ: Question = questions[currentIndex];
+
+  // Xáo trộn thứ tự các lựa chọn một cách ngẫu nhiên và ổn định trong suốt quá trình làm câu đó
+  const shuffledOptions = useMemo(() => {
+    if (!currentQ?.options) return [];
+    const arr = [...currentQ.options];
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }, [currentQ?.id]);
 
   const handleSelectOption = (opt: string) => {
     if (isAnswered) return;
@@ -122,7 +133,7 @@ export const PracticeTab: React.FC<PracticeTabProps> = ({
 
         {/* Các lựa chọn đáp án */}
         <div className="grid grid-cols-1 gap-3.5">
-          {currentQ.options?.map((option, idx) => {
+          {shuffledOptions.map((option, idx) => {
             const isSelected = selectedAnswer === option;
             const isThisCorrect = String(option).trim() === String(currentQ.correctAnswer).trim();
 

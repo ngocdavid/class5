@@ -66,8 +66,8 @@ export const vietnameseLessons: Lesson[] = [
         type: 'multiple_choice',
         prompt: 'Cặp từ nào dưới đây là cặp từ ĐỒNG NGHĨA HOÀN TOÀN?',
         options: [
-          'Mẹ - Má',
           'Chăm chỉ - Lười biếng',
+          'Mẹ - Má',
           'To lớn - Tí hon',
           'Đen nhánh - Trắng tinh'
         ],
@@ -81,7 +81,7 @@ export const vietnameseLessons: Lesson[] = [
         levelName: 'Khởi động',
         type: 'multiple_choice',
         prompt: 'Từ nào sau đây ĐỒNG NGHĨA với từ "chăm chỉ"?',
-        options: ['Cần cù', 'Thông minh', 'Dũng cảm', 'Nhanh nhẹn'],
+        options: ['Thông minh', 'Dũng cảm', 'Cần cù', 'Nhanh nhẹn'],
         correctAnswer: 'Cần cù',
         hint: 'Tìm từ miêu tả tính kiên trì, chịu khó làm việc của một người.',
         explanation: '"Cần cù" và "chăm chỉ" đều mang ý nghĩa chịu khó, kiên trì làm việc đều đặn.'
@@ -92,7 +92,7 @@ export const vietnameseLessons: Lesson[] = [
         levelName: 'Vững vàng',
         type: 'multiple_choice',
         prompt: 'Chọn từ thích hợp nhất điền vào chỗ chấm: "Bác Hồ kính yêu đã ... cả cuộc đời cho sự nghiệp giải phóng dân tộc."',
-        options: ['hi sinh', 'bỏ rơi', 'mất mát', 'lãng phí'],
+        options: ['bỏ rơi', 'mất mát', 'lãng phí', 'hi sinh'],
         correctAnswer: 'hi sinh',
         hint: 'Cần một từ trang trọng, thể hiện lòng biết ơn sâu sắc đối với vị lãnh tụ.',
         explanation: 'Từ "hi sinh" mang sắc thái trang trọng, thể hiện sự cống hiến cao cả của Bác Hồ cho đất nước.'
@@ -119,7 +119,7 @@ export const vietnameseLessons: Lesson[] = [
         levelName: 'Vững vàng',
         type: 'multiple_choice',
         prompt: 'Trong câu "Cánh đồng lúa rộng mênh mông.", từ nào có thể THAY THẾ cho từ "mênh mông" mà nghĩa không đổi?',
-        options: ['Bao la', 'Chật hẹp', 'Cao vút', 'Thăm thẳm'],
+        options: ['Chật hẹp', 'Cao vút', 'Bao la', 'Thăm thẳm'],
         correctAnswer: 'Bao la',
         hint: 'Từ nào miêu tả không gian rộng lớn đến tận chân trời?',
         explanation: '"Bao la" và "mênh mông" là hai từ đồng nghĩa tả không gian rộng lớn bằng phẳng như cánh đồng, biển cả.'
@@ -152,14 +152,14 @@ export const vietnameseLessons: Lesson[] = [
       {
         id: 'vn-tdn-s2',
         prompt: '"Quả thơm" ở miền Nam chính là quả gì ở miền Bắc?',
-        options: ['Quả dứa', 'Quả chuối', 'Quả ổi', 'Quả xoài'],
+        options: ['Quả chuối', 'Quả ổi', 'Quả xoài', 'Quả dứa'],
         correctAnswer: 'Quả dứa',
         explanation: 'Quả dứa và quả thơm (hoặc khóm) là các từ đồng nghĩa địa phương chỉ cùng một loại quả.'
       },
       {
         id: 'vn-tdn-s3',
         prompt: 'Tác dụng lớn nhất của việc dùng từ đồng nghĩa khi viết văn là:',
-        options: ['Giúp bài văn tránh lặp từ và giàu cảm xúc', 'Làm câu dài hơn', 'Làm cho người đọc khó hiểu', 'Tăng số lượng trang viết'],
+        options: ['Làm câu dài hơn', 'Giúp bài văn tránh lặp từ và giàu cảm xúc', 'Làm cho người đọc khó hiểu', 'Tăng số lượng trang viết'],
         correctAnswer: 'Giúp bài văn tránh lặp từ và giàu cảm xúc',
         explanation: 'Dùng từ đồng nghĩa linh hoạt giúp lời văn sinh động, mượt mà và biểu cảm hơn.'
       }
@@ -229,7 +229,7 @@ export const vietnameseLessons: Lesson[] = [
         levelName: 'Khởi động',
         type: 'multiple_choice',
         prompt: 'Từ "chân" trong "chân núi" được dùng theo nghĩa gì?',
-        options: ['Nghĩa chuyển', 'Nghĩa gốc', 'Từ đồng âm', 'Nghĩa bóng vô nghĩa'],
+        options: ['Nghĩa gốc', 'Từ đồng âm', 'Nghĩa chuyển', 'Nghĩa bóng vô nghĩa'],
         correctAnswer: 'Nghĩa chuyển',
         hint: '"Chân núi" là phần dưới cùng tiếp giáp mặt đất, mượn đặc điểm vị trí nâng đỡ của chân người.',
         explanation: '"Chân người" là nghĩa gốc. "Chân núi", "chân bàn" là nghĩa chuyển vì cùng chung đặc điểm vị trí dưới cùng.'
@@ -257,9 +257,9 @@ export const vietnameseLessons: Lesson[] = [
         type: 'multiple_choice',
         prompt: 'Từ "ăn" trong câu nào dưới đây được dùng theo NGHĨA GỐC?',
         options: [
-          'Hôm nay cả nhà em ăn cơm rất vui vẻ.',
           'Tàu hỏa đang vào ga ăn than.',
           'Chiếc thuyền này ăn nước rất sâu.',
+          'Hôm nay cả nhà em ăn cơm rất vui vẻ.',
           'Hai màu áo này rất ăn ý với nhau.'
         ],
         correctAnswer: 'Hôm nay cả nhà em ăn cơm rất vui vẻ.',
@@ -272,7 +272,7 @@ export const vietnameseLessons: Lesson[] = [
         levelName: 'Vững vàng',
         type: 'multiple_choice',
         prompt: 'Trong câu thơ: "Ruồi đậu mâm xôi đậu / Kiến bò đĩa thịt bò", các cặp từ "đậu - đậu" và "bò - bò" là:',
-        options: ['Từ đồng âm', 'Từ nhiều nghĩa', 'Từ đồng nghĩa', 'Từ trái nghĩa'],
+        options: ['Từ nhiều nghĩa', 'Từ đồng nghĩa', 'Từ trái nghĩa', 'Từ đồng âm'],
         correctAnswer: 'Từ đồng âm',
         hint: '"đậu" (hành động dừng lại) với "xôi đậu" (hạt đỗ); "bò" (hành động di chuyển) với "thịt bò" (loài vật).',
         explanation: 'Đây là câu đố chữ dân gian kinh điển về TỪ ĐỒNG ÂM, phát âm giống hệt nhau nhưng nghĩa hoàn toàn khác biệt.'
@@ -295,8 +295,8 @@ export const vietnameseLessons: Lesson[] = [
         type: 'multiple_choice',
         prompt: 'Xác định mối quan hệ giữa từ "ngọt" trong hai câu sau:\n(1) Quả cam này rất ngọt.\n(2) Cô giáo em có giọng nói rất ngọt ngào.',
         options: [
-          'Là từ nhiều nghĩa (chuyển nghĩa theo cảm giác dễ chịu)',
           'Là từ đồng âm (trùng phát âm ngẫu nhiên)',
+          'Là từ nhiều nghĩa (chuyển nghĩa theo cảm giác dễ chịu)',
           'Là từ trái nghĩa hoàn toàn',
           'Không có mối quan hệ nào'
         ],
@@ -309,7 +309,7 @@ export const vietnameseLessons: Lesson[] = [
       {
         id: 'vn-tam-s1',
         prompt: 'Từ có các nghĩa có liên quan với nhau được gọi là:',
-        options: ['Từ nhiều nghĩa', 'Từ đồng âm', 'Từ đồng nghĩa', 'Từ ghép'],
+        options: ['Từ đồng âm', 'Từ đồng nghĩa', 'Từ nhiều nghĩa', 'Từ ghép'],
         correctAnswer: 'Từ nhiều nghĩa',
         explanation: 'Từ nhiều nghĩa là từ có một nghĩa gốc và một hay nhiều nghĩa chuyển có mối liên hệ với nhau.'
       },
@@ -323,7 +323,7 @@ export const vietnameseLessons: Lesson[] = [
       {
         id: 'vn-tam-s3',
         prompt: '"Cây cầu bắc qua sông." và "Bé chơi cầu lông." Từ "cầu" là:',
-        options: ['Từ đồng âm', 'Từ nhiều nghĩa', 'Từ đồng nghĩa', 'Từ láy'],
+        options: ['Từ nhiều nghĩa', 'Từ đồng âm', 'Từ đồng nghĩa', 'Từ láy'],
         correctAnswer: 'Từ đồng âm',
         explanation: 'Cây cầu (công trình giao thông) và quả cầu lông (dụng cụ thể thao) không liên quan gì đến nhau.'
       }
@@ -410,7 +410,7 @@ export const vietnameseLessons: Lesson[] = [
         levelName: 'Khởi động',
         type: 'multiple_choice',
         prompt: 'Trong bài, tác giả đã sử dụng biện pháp nghệ thuật nào để làm cho cơn gió trở nên gần gũi như một người bạn?',
-        options: ['Nhân hóa', 'Điệp ngữ nhiều lần', 'Ẩn dụ chuyển đổi', 'Nói quá'],
+        options: ['Điệp ngữ nhiều lần', 'Ẩn dụ chuyển đổi', 'Nhân hóa', 'Nói quá'],
         correctAnswer: 'Nhân hóa',
         hint: 'Gán những hành động, cảm xúc của con người cho sự vật (gió).',
         explanation: 'Biện pháp nhân hóa giúp cơn gió biết thì thầm, biết ca hát, vui đùa như một người bạn nhỏ.'
@@ -422,10 +422,10 @@ export const vietnameseLessons: Lesson[] = [
         type: 'multiple_choice',
         prompt: 'Những từ ngữ nào sau đây miêu tả âm thanh của gió?',
         options: [
-          'Vi vu, xôn xao, rì rào',
           'Trắng tinh, đỏ rực, xanh biếc',
           'Tròn xoe, vuông vắn, dài ngoẵng',
-          'Mênh mông, bát ngát, thăm thẳm'
+          'Mênh mông, bát ngát, thăm thẳm',
+          'Vi vu, xôn xao, rì rào'
         ],
         correctAnswer: 'Vi vu, xôn xao, rì rào',
         hint: 'Tìm các từ tượng thanh mô tả âm thanh mà tai em nghe được.',
@@ -438,8 +438,8 @@ export const vietnameseLessons: Lesson[] = [
         type: 'multiple_choice',
         prompt: 'Chi tiết nào cho thấy các bạn nhỏ trong bài rất yêu quý thiên nhiên?',
         options: [
-          'Biết lắng nghe và cảm nhận từng thanh âm nhỏ bé của gió',
           'Đóng chặt cửa ở trong nhà',
+          'Biết lắng nghe và cảm nhận từng thanh âm nhỏ bé của gió',
           'Chặt hết cây cối để gió không thổi được',
           'Không quan tâm đến tiếng gió'
         ],
@@ -453,7 +453,7 @@ export const vietnameseLessons: Lesson[] = [
         levelName: 'Vững vàng',
         type: 'multiple_choice',
         prompt: 'Từ "thanh âm" trong nhan đề bài học đồng nghĩa với từ nào dưới đây?',
-        options: ['Tiếng vang / Âm thanh', 'Màu sắc', 'Hương vị', 'Hình dáng'],
+        options: ['Màu sắc', 'Hương vị', 'Tiếng vang / Âm thanh', 'Hình dáng'],
         correctAnswer: 'Tiếng vang / Âm thanh',
         hint: '"Thanh" là tiếng, "âm" là âm thanh.',
         explanation: '"Thanh âm" là từ Hán Việt chỉ âm thanh, tiếng động có giai điệu.'
@@ -465,8 +465,8 @@ export const vietnameseLessons: Lesson[] = [
         type: 'multiple_choice',
         prompt: 'Bài học rút ra cho chúng ta sau khi học bài "Thanh âm của gió" là gì?',
         options: [
-          'Hãy biết mở rộng tâm hồn, yêu quý và lắng nghe vẻ đẹp kỳ diệu của thiên nhiên xung quanh',
           'Nên sợ hãi mỗi khi nghe tiếng gió thổi',
+          'Hãy biết mở rộng tâm hồn, yêu quý và lắng nghe vẻ đẹp kỳ diệu của thiên nhiên xung quanh',
           'Chỉ nên học trong sách vở, không cần ra ngoài thiên nhiên',
           'Gió chỉ mang lại phiền toái cho con người'
         ],
@@ -486,14 +486,14 @@ export const vietnameseLessons: Lesson[] = [
       {
         id: 'vn-b1-s2',
         prompt: 'Từ nào sau đây KHÔNG PHẢI là từ tượng thanh mô tả tiếng gió?',
-        options: ['Vàng rực', 'Xào xạc', 'Rì rào', 'Vi vu'],
+        options: ['Xào xạc', 'Rì rào', 'Vi vu', 'Vàng rực'],
         correctAnswer: 'Vàng rực',
         explanation: '"Vàng rực" là từ chỉ màu sắc thị giác, không phải âm thanh.'
       },
       {
         id: 'vn-b1-s3',
         prompt: 'Khi đọc diễn cảm bài văn miêu tả vẻ đẹp thiên nhiên, giọng đọc nên như thế nào?',
-        options: ['Nhẹ nhàng, truyền cảm, tươi vui', 'Quát tháo thật to', 'Đọc thật nhanh cho xong', 'Buồn bã, ủ rũ'],
+        options: ['Quát tháo thật to', 'Nhẹ nhàng, truyền cảm, tươi vui', 'Đọc thật nhanh cho xong', 'Buồn bã, ủ rũ'],
         correctAnswer: 'Nhẹ nhàng, truyền cảm, tươi vui',
         explanation: 'Giọng đọc nhẹ nhàng, tươi vui giúp truyền tải trọn vẹn vẻ đẹp của bài văn.'
       }

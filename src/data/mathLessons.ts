@@ -69,7 +69,7 @@ export const mathLessons: Lesson[] = [
         prompt: 'Quan sát hình thước đo bên dưới: Phần tô màu vàng chiếm $\\frac{7}{10}$ mét. Số thập phân tương ứng là:',
         illustrationType: 'decimal-strip-10',
         illustrationData: { filled: 7 },
-        options: ['0,07', '0,7', '7,0', '7,10'],
+        options: ['0,07', '7,0', '0,7', '7,10'],
         correctAnswer: '0,7',
         hint: 'Mẫu số là 10 (có 1 chữ số 0), vậy sau dấu phẩy chỉ có 1 chữ số.',
         explanation: 'Đoạn thước chia 10 phần, tô màu 7 phần là $\\frac{7}{10} = 0,7$ (đọc là không phẩy bảy).'
@@ -91,7 +91,7 @@ export const mathLessons: Lesson[] = [
         levelName: 'Vững vàng',
         type: 'multiple_choice',
         prompt: 'Chữ số 9 trong số thập phân $12,94$ thuộc hàng nào?',
-        options: ['Hàng chục', 'Hàng phần mười', 'Hàng phần trăm', 'Hàng đơn vị'],
+        options: ['Hàng phần mười', 'Hàng chục', 'Hàng phần trăm', 'Hàng đơn vị'],
         correctAnswer: 'Hàng phần mười',
         hint: 'Chữ số đầu tiên ngay sau dấu phẩy là hàng phần mười.',
         explanation: 'Sau dấu phẩy, chữ số đầu tiên (số 9) là hàng phần mười, chữ số thứ hai (số 4) là hàng phần trăm.'
@@ -104,7 +104,7 @@ export const mathLessons: Lesson[] = [
         prompt: 'Quan sát hình vuông 100 ô dưới đây (đã tô màu 25 ô). Phân số thập phân $\\frac{25}{100}$ được viết thành số thập phân là:',
         illustrationType: 'decimal-grid-100',
         illustrationData: { filled: 25 },
-        options: ['2,5', '0,25', '0,025', '25,0'],
+        options: ['2,5', '0,025', '25,0', '0,25'],
         correctAnswer: '0,25',
         hint: 'Lưới 100 ô, tô 25 ô tức là 25 phần trăm ➔ viết là 0,25.',
         explanation: '$\\frac{25}{100} = 0,25$ (đọc là không phẩy hai mươi lăm).'
@@ -115,7 +115,7 @@ export const mathLessons: Lesson[] = [
         levelName: 'Vững vàng',
         type: 'multiple_choice',
         prompt: 'Số thập phân "Bảy đơn vị, năm phần mười" được viết là:',
-        options: ['75', '7,5', '7,05', '0,75'],
+        options: ['75', '7,05', '7,5', '0,75'],
         correctAnswer: '7,5',
         hint: 'Bảy đơn vị là phần nguyên (viết 7). Năm phần mười đứng ngay sau dấu phẩy (viết 5).',
         explanation: 'Bảy đơn vị $\\rightarrow 7$, năm phần mười $\\rightarrow 0,5$. Ghép lại được $7,5$.'
@@ -126,7 +126,7 @@ export const mathLessons: Lesson[] = [
         levelName: 'Thử thách',
         type: 'multiple_choice',
         prompt: 'Bác Ba có cuộn dây dài $3\\text{ m } 8\\text{ dm}$. Hãy viết độ dài cuộn dây dưới dạng số thập phân có đơn vị là mét:',
-        options: ['38 m', '3,8 m', '3,08 m', '0,38 m'],
+        options: ['3,8 m', '38 m', '3,08 m', '0,38 m'],
         correctAnswer: '3,8 m',
         hint: '$1\\text{ dm} = \\frac{1}{10}\\text{ m} = 0,1\\text{ m}$. Vậy $8\\text{ dm} = 0,8\\text{ m}$.',
         explanation: '$3\\text{ m } 8\\text{ dm} = 3\\text{ m} + \\frac{8}{10}\\text{ m} = 3,8\\text{ m}$.'
@@ -254,7 +254,7 @@ export const mathLessons: Lesson[] = [
         levelName: 'Vững vàng',
         type: 'multiple_choice',
         prompt: 'Tìm kết quả của: $4,65 + 12,3 = ?$',
-        options: ['16,95', '16,68', '58,8', '17,05'],
+        options: ['16,68', '58,8', '16,95', '17,05'],
         correctAnswer: '16,95',
         hint: 'Bạn có thể coi $12,3$ là $12,30$. Sau đó cộng $4,65 + 12,30$.',
         explanation: '$4,65 + 12,30 = 16,95$.'
@@ -265,7 +265,7 @@ export const mathLessons: Lesson[] = [
         levelName: 'Vững vàng',
         type: 'multiple_choice',
         prompt: 'Tính nhanh: $3,7 + 5,4 + 6,3 = ?$',
-        options: ['15,4', '14,4', '15,0', '16,4'],
+        options: ['14,4', '15,0', '16,4', '15,4'],
         correctAnswer: '15,4',
         hint: 'Nhóm $3,7 + 6,3$ trước xem ra số tròn mấy nhé! ($3,7 + 6,3 = 10$).',
         explanation: '$(3,7 + 6,3) + 5,4 = 10 + 5,4 = 15,4$.'
@@ -301,7 +301,7 @@ export const mathLessons: Lesson[] = [
       {
         id: 'm19-s3',
         prompt: '$12,4 + 0 = ?$',
-        options: ['12,4', '0', '124', '1,24'],
+        options: ['0', '12,4', '124', '1,24'],
         correctAnswer: '12,4',
         explanation: 'Bất kỳ số nào cộng với 0 cũng bằng chính nó.'
       }
@@ -386,8 +386,8 @@ export const mathLessons: Lesson[] = [
         type: 'multiple_choice',
         prompt: 'Muốn tính diện tích hình tam giác vuông, ta có thể:',
         options: [
-          'Lấy tích độ dài hai cạnh góc vuông chia cho 2',
           'Lấy tích hai cạnh góc vuông nhân 2',
+          'Lấy tích độ dài hai cạnh góc vuông chia cho 2',
           'Cộng độ dài hai cạnh góc vuông',
           'Lấy cạnh huyền nhân đôi'
         ],
@@ -425,7 +425,7 @@ export const mathLessons: Lesson[] = [
         levelName: 'Vững vàng',
         type: 'multiple_choice',
         prompt: 'Nếu gấp độ dài đáy của một hình tam giác lên 2 lần và giữ nguyên chiều cao thì diện tích hình tam giác đó sẽ:',
-        options: ['Không đổi', 'Tăng lên 2 lần', 'Tăng lên 4 lần', 'Giảm 2 lần'],
+        options: ['Không đổi', 'Tăng lên 4 lần', 'Tăng lên 2 lần', 'Giảm 2 lần'],
         correctAnswer: 'Tăng lên 2 lần',
         hint: 'Đáy tăng bao nhiêu lần thì diện tích tăng bấy nhiêu lần vì diện tích tỉ lệ thuận với đáy.',
         explanation: 'Vì $S = (a \\times h) : 2$, khi $a$ gấp lên 2 lần thì $(2 \\times a \\times h) : 2$ sẽ gấp 2 lần diện tích ban đầu.'
@@ -460,7 +460,7 @@ export const mathLessons: Lesson[] = [
       {
         id: 'm25-s3',
         prompt: 'Độ dài đáy và chiều cao của tam giác có bắt buộc cùng đơn vị đo không?',
-        options: ['Bắt buộc cùng đơn vị', 'Không cần', 'Chỉ cần một số đo', 'Tùy loại tam giác'],
+        options: ['Không cần', 'Bắt buộc cùng đơn vị', 'Chỉ cần một số đo', 'Tùy loại tam giác'],
         correctAnswer: 'Bắt buộc cùng đơn vị',
         explanation: 'Phải cùng đơn vị đo thì phép nhân diện tích mới có ý nghĩa.'
       }

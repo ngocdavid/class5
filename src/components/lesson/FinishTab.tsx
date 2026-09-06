@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Lesson } from '../../types';
 import { KaTeXView } from '../common/KaTeXView';
 import { Trophy, CheckCircle2, RotateCcw, Home, Zap, Heart } from 'lucide-react';
@@ -27,6 +27,17 @@ export const FinishTab: React.FC<FinishTabProps> = ({
 
   const speedQuestions = lesson.speedQuestions;
   const currentSpeedQ = speedQuestions[speedIndex];
+
+  // Xáo trộn thứ tự các lựa chọn một cách ngẫu nhiên và ổn định trong mỗi câu hỏi
+  const shuffledSpeedOptions = useMemo(() => {
+    if (!currentSpeedQ?.options) return [];
+    const arr = [...currentSpeedQ.options];
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }, [currentSpeedQ?.id]);
 
   useEffect(() => {
     if (speedDone) {
@@ -77,7 +88,7 @@ export const FinishTab: React.FC<FinishTabProps> = ({
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
-            {currentSpeedQ.options.map((option, idx) => (
+            {shuffledSpeedOptions.map((option, idx) => (
               <button
                 key={idx}
                 onClick={() => handleSpeedAnswer(option)}
