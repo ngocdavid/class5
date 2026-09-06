@@ -21,6 +21,7 @@ import {
   Filter
 } from 'lucide-react';
 import { sounds } from './utils/sound';
+import { Analytics } from '@vercel/analytics/react';
 
 function MainApp() {
   const [currentSubject, setCurrentSubject] = useState<Subject>('math');
@@ -509,6 +510,7 @@ export function App() {
   return (
     <ThemeProvider>
       <MainApp />
+      <Analytics />
     </ThemeProvider>
   );
 }
