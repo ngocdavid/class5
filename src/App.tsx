@@ -43,13 +43,25 @@ function MainApp() {
   const [progress, setProgress] = useState<UserProgress>(() => {
     try {
       const saved = localStorage.getItem('class5_study_progress');
-      if (saved) return JSON.parse(saved);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        // Tự động dọn dẹp nếu thiết bị còn lưu dữ liệu mẫu mặc định cũ (bài 10 và 45 sao)
+        const isOldDefault =
+          parsed.stars === 45 &&
+          Array.isArray(parsed.completedLessons) &&
+          parsed.completedLessons.length === 1 &&
+          parsed.completedLessons[0] === 'math-bai-10';
+
+        if (!isOldDefault) {
+          return parsed;
+        }
+      }
     } catch {}
     return {
-      stars: 45,
-      streakDays: 3,
-      completedLessons: ['math-bai-10'],
-      scorePerLesson: { 'math-bai-10': 6 }
+      stars: 0,
+      streakDays: 0,
+      completedLessons: [],
+      scorePerLesson: {}
     };
   });
 
@@ -69,6 +81,7 @@ function MainApp() {
       return {
         ...prev,
         stars: prev.stars + 15,
+        streakDays: prev.streakDays === 0 ? 1 : prev.streakDays,
         completedLessons: [...prev.completedLessons, lessonId]
       };
     });
@@ -141,6 +154,22 @@ function MainApp() {
     a.download = `tien-trinh-hoc-lop-5-${new Date().toISOString().slice(0,10)}.json`;
     a.click();
     sounds.playClick();
+  };
+
+  const handleResetProgress = () => {
+    if (window.confirm('Bạn có chắc chắn muốn đặt lại toàn bộ số sao, chuỗi ngày và bài đã học về ban đầu (0 sao, 0 bài)?')) {
+      const resetState: UserProgress = {
+        stars: 0,
+        streakDays: 0,
+        completedLessons: [],
+        scorePerLesson: {}
+      };
+      setProgress(resetState);
+      localStorage.setItem('class5_study_progress', JSON.stringify(resetState));
+      sounds.playClick();
+      alert('Đã đặt lại tiến độ về ban đầu thành công!');
+      setShowBackupModal(false);
+    }
   };
 
   return (
@@ -483,10 +512,16 @@ function MainApp() {
               </div>
             </div>
 
-            <div className="text-center pt-2">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-3 border-t border-slate-200">
+              <button
+                onClick={handleResetProgress}
+                className="text-xs text-rose-500 hover:text-rose-700 font-bold hover:underline transition-colors py-1"
+              >
+                🗑️ Đặt lại toàn bộ tiến độ (Reset về 0)
+              </button>
               <button
                 onClick={() => setShowBackupModal(false)}
-                className="px-8 py-3 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-black text-sm border-2 border-slate-300"
+                className="w-full sm:w-auto px-8 py-2.5 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-black text-sm border-2 border-slate-300"
               >
                 Đóng
               </button>
