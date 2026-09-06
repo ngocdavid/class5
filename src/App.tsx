@@ -498,7 +498,7 @@ function MainApp() {
 
       {/* Footer */}
       <footer className="relative z-10 border-t border-amber-200/80 bg-white/80 backdrop-blur-sm py-5 text-center text-xs sm:text-sm font-bold text-slate-500">
-        Học Tốt Lớp 5 • Trọn bộ 136 bài SGK Toán & Tiếng Việt (Kết nối tri thức với cuộc sống) • Tự học 30-45 phút tại nhà
+        Bản quyền bố bạn Pink @2026. <a href="mailto:ngocdavid@gmail.com" className="text-blue-600 hover:underline">ngocdavid@gmail.com</a>
       </footer>
 
     </div>
