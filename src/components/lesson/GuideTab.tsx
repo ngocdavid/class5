@@ -15,21 +15,21 @@ export const GuideTab: React.FC<GuideTabProps> = ({ lesson, onGoToPractice }) =>
     <div className="space-y-7 max-w-4xl mx-auto">
       
       {/* Khối 1: Dẫn nhập & Mascot Speech */}
-      <div className="bg-gradient-to-r from-amber-100/90 via-orange-50 to-yellow-100/90 p-6 sm:p-7 rounded-3xl border-4 border-amber-300 shadow-sm flex flex-col sm:flex-row items-start sm:items-center gap-5">
-        <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-3xl bg-amber-400 border-3 border-amber-500 flex items-center justify-center text-4xl sm:text-5xl shadow-sm shrink-0 animate-bounce-gentle">
+      <div className="bg-gradient-to-r from-amber-100/90 via-orange-50 to-yellow-100/90 p-5 sm:p-7 rounded-3xl border-3 sm:border-4 border-amber-300 shadow-sm flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5">
+        <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-3xl bg-amber-400 border-3 border-amber-500 flex items-center justify-center text-3xl sm:text-5xl shadow-sm shrink-0 animate-bounce-gentle">
           🤖
         </div>
-        <div className="space-y-2 flex-1">
-          <div className="flex items-center gap-3">
-            <span className="font-black text-amber-950 text-lg sm:text-xl">Rô-bốt Thông Thái mách bạn:</span>
-            <span className="text-xs sm:text-sm bg-amber-200 text-amber-950 font-black px-3 py-1 rounded-full border border-amber-300">
+        <div className="space-y-2 flex-1 min-w-0">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+            <span className="font-black text-amber-950 text-base sm:text-lg md:text-xl">Rô-bốt Thông Thái mách bạn:</span>
+            <span className="text-xs sm:text-sm bg-amber-200 text-amber-950 font-black px-3 py-0.5 sm:py-1 rounded-full border border-amber-300 shrink-0">
               Đọc trong 5 phút
             </span>
           </div>
-          <p className="text-slate-800 text-base sm:text-lg font-bold italic">
+          <p className="text-slate-800 text-sm sm:text-base md:text-lg font-bold italic">
             "{lesson.mascotGreeting}"
           </p>
-          <div className="pt-2 text-slate-800 text-base sm:text-lg bg-white/80 p-4 rounded-2xl border-2 border-amber-200 leading-relaxed font-semibold">
+          <div className="pt-2 text-slate-800 text-sm sm:text-base md:text-lg bg-white/80 p-3.5 sm:p-4 rounded-2xl border-2 border-amber-200 leading-relaxed font-semibold">
             <KaTeXView content={lesson.guide.storyIntro} />
           </div>
         </div>
@@ -44,51 +44,54 @@ export const GuideTab: React.FC<GuideTabProps> = ({ lesson, onGoToPractice }) =>
       )}
 
       {/* Khối 2: Quy tắc vàng / Định nghĩa cốt lõi */}
-      <div className="bg-white p-6 sm:p-7 rounded-3xl border-4 border-sky-300 shadow-chunky-sm space-y-3 relative overflow-hidden">
-        <div className="absolute top-0 right-0 bg-sky-500 text-white px-5 py-1.5 rounded-bl-2xl text-xs sm:text-sm font-black tracking-wider uppercase flex items-center gap-1.5">
-          <Sparkles className="w-4 h-4" /> Bí kíp cốt lõi
+      <div className="bg-white p-5 sm:p-7 rounded-3xl border-3 sm:border-4 border-sky-300 shadow-chunky-sm space-y-3">
+        <div className="flex flex-wrap items-center justify-between gap-2.5">
+          <h3 className="font-black text-lg sm:text-xl md:text-2xl text-sky-950 flex items-center gap-2 sm:gap-2.5 text-balance">
+            <Lightbulb className="w-5 h-5 sm:w-6 sm:h-6 text-amber-500 fill-amber-400 shrink-0" />
+            <span>Quy tắc vàng cần nhớ:</span>
+          </h3>
+          <div className="bg-sky-500 text-white px-3.5 sm:px-4 py-1 rounded-xl text-xs sm:text-sm font-black tracking-wider uppercase flex items-center gap-1.5 shrink-0 shadow-xs">
+            <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+            <span>Bí kíp cốt lõi</span>
+          </div>
         </div>
-        <h3 className="font-black text-xl sm:text-2xl text-sky-950 flex items-center gap-2.5">
-          <Lightbulb className="w-6 h-6 text-amber-500 fill-amber-400" />
-          Quy tắc vàng cần nhớ:
-        </h3>
-        <div className="text-slate-900 font-black text-lg sm:text-xl bg-sky-50 p-5 rounded-2xl border-3 border-sky-200 leading-relaxed shadow-xs">
+        <div className="text-slate-900 font-black text-base sm:text-lg md:text-xl bg-sky-50 p-4 sm:p-5 rounded-2xl border-2 sm:border-3 border-sky-200 leading-relaxed shadow-xs">
           <KaTeXView content={lesson.guide.coreFormulaOrRule} />
         </div>
       </div>
 
       {/* Khối 3: 3 Bước làm bài chuẩn */}
       <div className="space-y-4">
-        <h3 className="font-black text-xl sm:text-2xl text-slate-900 flex items-center gap-2.5">
-          <span className="text-2xl sm:text-3xl">📋</span>
-          Công thức 3 bước làm bài:
+        <h3 className="font-black text-lg sm:text-xl md:text-2xl text-slate-900 flex items-center gap-2 sm:gap-2.5 text-balance">
+          <span className="text-2xl sm:text-3xl shrink-0">📋</span>
+          <span>Công thức 3 bước làm bài:</span>
         </h3>
         
         <div className="grid grid-cols-1 gap-4">
           {lesson.guide.steps.map((step) => (
             <div
               key={step.stepNumber}
-              className="bg-white p-5 sm:p-6 rounded-3xl border-3 border-slate-200 shadow-sm hover:border-blue-400 transition flex flex-col sm:flex-row items-start gap-4"
+              className="bg-white p-4 sm:p-6 rounded-3xl border-2 sm:border-3 border-slate-200 shadow-sm hover:border-blue-400 transition flex flex-col sm:flex-row items-start gap-3.5 sm:gap-4"
             >
-              <div className="w-12 h-12 rounded-2xl bg-blue-500 text-white font-black text-2xl flex items-center justify-center shrink-0 shadow-md border-2 border-blue-600">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-blue-500 text-white font-black text-xl sm:text-2xl flex items-center justify-center shrink-0 shadow-md border-2 border-blue-600">
                 {step.stepNumber}
               </div>
-              <div className="space-y-1.5 flex-1">
-                <div className="flex items-center justify-between gap-2">
-                  <h4 className="font-black text-slate-900 text-lg sm:text-xl">
+              <div className="space-y-1.5 flex-1 min-w-0">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <h4 className="font-black text-slate-900 text-base sm:text-lg md:text-xl text-balance">
                     {step.title}
                   </h4>
                   {step.badge && (
-                    <span className="text-xs sm:text-sm font-black px-3 py-1 rounded-lg bg-blue-50 text-blue-800 border-2 border-blue-200">
+                    <span className="text-xs sm:text-sm font-black px-2.5 py-0.5 sm:py-1 rounded-lg bg-blue-50 text-blue-800 border-2 border-blue-200 shrink-0">
                       {step.badge}
                     </span>
                   )}
                 </div>
-                <p className="text-slate-700 text-base sm:text-lg font-bold leading-relaxed">
+                <p className="text-slate-700 text-sm sm:text-base md:text-lg font-bold leading-relaxed">
                   <KaTeXView content={step.description} />
                 </p>
                 {step.example && (
-                  <div className="mt-3 bg-slate-50 border-2 border-slate-200 p-3.5 rounded-2xl text-sm sm:text-base font-bold text-slate-800">
+                  <div className="mt-3 bg-slate-50 border-2 border-slate-200 p-3 sm:p-3.5 rounded-2xl text-xs sm:text-sm md:text-base font-bold text-slate-800">
                     <span className="text-blue-700 font-black">Ví dụ minh họa: </span>
                     <KaTeXView content={step.example} />
                   </div>
@@ -100,10 +103,10 @@ export const GuideTab: React.FC<GuideTabProps> = ({ lesson, onGoToPractice }) =>
       </div>
 
       {/* Khối 4: Cạm bẫy hay nhầm (Cực kỳ hữu ích cho HS Trung bình) */}
-      <div className="bg-orange-50 border-4 border-orange-300 rounded-3xl p-6 sm:p-7 shadow-sm space-y-4">
-        <div className="flex items-center gap-2.5 text-orange-950 font-black text-xl sm:text-2xl">
-          <AlertTriangle className="w-7 h-7 text-orange-600 fill-orange-300 animate-bounce-gentle" />
-          Cạm bẫy bạn hay nhầm nhất:
+      <div className="bg-orange-50 border-3 sm:border-4 border-orange-300 rounded-3xl p-5 sm:p-7 shadow-sm space-y-4">
+        <div className="flex items-center gap-2 sm:gap-2.5 text-orange-950 font-black text-lg sm:text-xl md:text-2xl text-balance">
+          <AlertTriangle className="w-6 h-6 sm:w-7 sm:h-7 text-orange-600 fill-orange-300 animate-bounce-gentle shrink-0" />
+          <span>Cạm bẫy bạn hay nhầm nhất:</span>
         </div>
         
         <div className="space-y-4">

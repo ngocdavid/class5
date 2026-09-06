@@ -41,7 +41,7 @@ const AdventureDecorations: React.FC = () => {
       </svg>
 
       {/* LỀ TRÁI: Dây leo nhiệt đới, Bản đồ kho báu X, La bàn hoa tiêu, Rương vàng */}
-      <div className="absolute left-0 top-0 bottom-0 w-28 sm:w-44 md:w-56 lg:w-72 xl:w-84 2xl:w-96 flex flex-col justify-between py-6 pl-2 sm:pl-4 opacity-30 md:opacity-75 xl:opacity-100 transition-opacity duration-500">
+      <div className="absolute left-0 top-0 bottom-0 w-28 sm:w-44 md:w-56 lg:w-72 xl:w-84 2xl:w-96 flex flex-col justify-between py-6 pl-2 sm:pl-4 opacity-10 md:opacity-75 xl:opacity-100 transition-opacity duration-500">
         
         {/* Góc trên bên trái: Dây leo rừng nhiệt đới trập trùng */}
         <div className="transform -translate-x-2 -translate-y-2 animate-bounce-gentle">
@@ -106,7 +106,7 @@ const AdventureDecorations: React.FC = () => {
       </div>
 
       {/* LỀ PHẢI: Lá cọ viễn chinh, Kính viễn vọng thám hiểm, La bàn hàng hải, Mỏ neo */}
-      <div className="absolute right-0 top-0 bottom-0 w-28 sm:w-44 md:w-56 lg:w-72 xl:w-84 2xl:w-96 flex flex-col justify-between py-6 pr-2 sm:pr-4 items-end opacity-30 md:opacity-75 xl:opacity-100 transition-opacity duration-500">
+      <div className="absolute right-0 top-0 bottom-0 w-28 sm:w-44 md:w-56 lg:w-72 xl:w-84 2xl:w-96 flex flex-col justify-between py-6 pr-2 sm:pr-4 items-end opacity-10 md:opacity-75 xl:opacity-100 transition-opacity duration-500">
         
         {/* Góc trên bên phải: Lá cọ và dây leo sa mạc xanh tốt */}
         <div className="transform translate-x-2 -translate-y-2 animate-bounce-gentle">
@@ -182,7 +182,7 @@ const SpaceDecorations: React.FC = () => {
       </div>
 
       {/* LỀ TRÁI: Trạm không gian vi mạch, Chòm sao, Hành tinh khổng lồ */}
-      <div className="absolute left-0 top-0 bottom-0 w-28 sm:w-44 md:w-56 lg:w-72 xl:w-84 flex flex-col justify-between py-6 pl-2 sm:pl-4 opacity-35 md:opacity-80 xl:opacity-100 transition-opacity duration-500">
+      <div className="absolute left-0 top-0 bottom-0 w-28 sm:w-44 md:w-56 lg:w-72 xl:w-84 flex flex-col justify-between py-6 pl-2 sm:pl-4 opacity-10 md:opacity-75 xl:opacity-100 transition-opacity duration-500">
         
         {/* Vệ tinh / Trạm vũ trụ không gian Cyber phát sóng */}
         <div className="transform animate-bounce-gentle">
@@ -239,7 +239,7 @@ const SpaceDecorations: React.FC = () => {
       </div>
 
       {/* LỀ PHẢI: Tên lửa phi thuyền, Phi hành gia Chibi, Tinh vân rực rỡ */}
-      <div className="absolute right-0 top-0 bottom-0 w-28 sm:w-44 md:w-56 lg:w-72 xl:w-84 flex flex-col justify-between py-6 pr-2 sm:pr-4 items-end opacity-35 md:opacity-80 xl:opacity-100 transition-opacity duration-500">
+      <div className="absolute right-0 top-0 bottom-0 w-28 sm:w-44 md:w-56 lg:w-72 xl:w-84 flex flex-col justify-between py-6 pr-2 sm:pr-4 items-end opacity-10 md:opacity-75 xl:opacity-100 transition-opacity duration-500">
         
         {/* Tàu con thoi phóng vút lên với luồng lửa phản lực */}
         <div className="transform -rotate-12 animate-bounce-gentle">
@@ -311,7 +311,7 @@ const PixelDecorations: React.FC = () => {
       </svg>
 
       {/* LỀ TRÁI: Đám mây pixel, Cây khối hộp Minecraft, Khối đất cỏ, Cúp pixel */}
-      <div className="absolute left-0 top-0 bottom-0 w-28 sm:w-44 md:w-56 lg:w-72 xl:w-84 flex flex-col justify-between py-6 pl-2 sm:pl-4 opacity-35 md:opacity-85 xl:opacity-100 transition-opacity duration-500">
+      <div className="absolute left-0 top-0 bottom-0 w-28 sm:w-44 md:w-56 lg:w-72 xl:w-84 flex flex-col justify-between py-6 pl-2 sm:pl-4 opacity-10 md:opacity-75 xl:opacity-100 transition-opacity duration-500">
         
         {/* Đám mây khối hộp Pixel 8-bit */}
         <div className="transform translate-x-2">
@@ -358,7 +358,7 @@ const PixelDecorations: React.FC = () => {
       </div>
 
       {/* LỀ PHẢI: Mặt trời pixel, Thanh 3 tim sinh lực ❤️❤️❤️, Kiếm kim cương */}
-      <div className="absolute right-0 top-0 bottom-0 w-28 sm:w-44 md:w-56 lg:w-72 xl:w-84 flex flex-col justify-between py-6 pr-2 sm:pr-4 items-end opacity-35 md:opacity-85 xl:opacity-100 transition-opacity duration-500">
+      <div className="absolute right-0 top-0 bottom-0 w-28 sm:w-44 md:w-56 lg:w-72 xl:w-84 flex flex-col justify-between py-6 pr-2 sm:pr-4 items-end opacity-10 md:opacity-75 xl:opacity-100 transition-opacity duration-500">
         
         {/* Mặt trời vuông 8-bit vàng chói */}
         <div className="transform -translate-x-2">
@@ -418,7 +418,7 @@ const ChibiDecorations: React.FC = () => {
       </div>
 
       {/* LỀ TRÁI: Cầu vồng pastel, Dấu chân mèo Chibi đáng yêu, Đũa phép ngôi sao */}
-      <div className="absolute left-0 top-0 bottom-0 w-28 sm:w-44 md:w-56 lg:w-72 xl:w-84 flex flex-col justify-between py-6 pl-2 sm:pl-4 opacity-35 md:opacity-85 xl:opacity-100 transition-opacity duration-500">
+      <div className="absolute left-0 top-0 bottom-0 w-28 sm:w-44 md:w-56 lg:w-72 xl:w-84 flex flex-col justify-between py-6 pl-2 sm:pl-4 opacity-10 md:opacity-75 xl:opacity-100 transition-opacity duration-500">
         
         {/* Đám mây hồng & Cầu vồng ngọt ngào */}
         <div className="transform animate-bounce-gentle">
@@ -470,7 +470,7 @@ const ChibiDecorations: React.FC = () => {
       </div>
 
       {/* LỀ PHẢI: Ngôi sao Kira-kira ✨, Ly trà sữa trân châu Boba Chibi, Mèo ngủ */}
-      <div className="absolute right-0 top-0 bottom-0 w-28 sm:w-44 md:w-56 lg:w-72 xl:w-84 flex flex-col justify-between py-6 pr-2 sm:pr-4 items-end opacity-35 md:opacity-85 xl:opacity-100 transition-opacity duration-500">
+      <div className="absolute right-0 top-0 bottom-0 w-28 sm:w-44 md:w-56 lg:w-72 xl:w-84 flex flex-col justify-between py-6 pr-2 sm:pr-4 items-end opacity-10 md:opacity-75 xl:opacity-100 transition-opacity duration-500">
         
         {/* Ngôi sao lấp lánh Anime Kira-kira ✨ */}
         <div className="transform animate-pulse">
@@ -549,7 +549,7 @@ const SportyDecorations: React.FC = () => {
       </svg>
 
       {/* LỀ TRÁI: Dải sọc thể thao đường đua, Giày Sneakers, Ván trượt Skateboard */}
-      <div className="absolute left-0 top-0 bottom-0 w-28 sm:w-44 md:w-56 lg:w-72 xl:w-84 flex flex-col justify-between py-6 pl-2 sm:pl-4 opacity-35 md:opacity-85 xl:opacity-100 transition-opacity duration-500">
+      <div className="absolute left-0 top-0 bottom-0 w-28 sm:w-44 md:w-56 lg:w-72 xl:w-84 flex flex-col justify-between py-6 pl-2 sm:pl-4 opacity-10 md:opacity-75 xl:opacity-100 transition-opacity duration-500">
         
         {/* Dải 3 vạch thể thao đường phố (Varsity Stripes) */}
         <div className="transform -translate-x-2">
@@ -597,7 +597,7 @@ const SportyDecorations: React.FC = () => {
       </div>
 
       {/* LỀ PHẢI: Sticker COOL, Quả bóng rổ & Bóng đá, Huy chương vàng Vô địch */}
-      <div className="absolute right-0 top-0 bottom-0 w-28 sm:w-44 md:w-56 lg:w-72 xl:w-84 flex flex-col justify-between py-6 pr-2 sm:pr-4 items-end opacity-35 md:opacity-85 xl:opacity-100 transition-opacity duration-500">
+      <div className="absolute right-0 top-0 bottom-0 w-28 sm:w-44 md:w-56 lg:w-72 xl:w-84 flex flex-col justify-between py-6 pr-2 sm:pr-4 items-end opacity-10 md:opacity-75 xl:opacity-100 transition-opacity duration-500">
         
         {/* Sticker Graffiti nổi "COOL" / "NO.1" */}
         <div className="transform rotate-12 animate-bounce-gentle">

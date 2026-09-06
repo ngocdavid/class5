@@ -158,7 +158,7 @@ function MainApp() {
       />
 
       {/* Main Container */}
-      <main className="relative z-10 flex-1 max-w-6xl w-full mx-auto px-4 sm:px-8 py-7">
+      <main className="relative z-10 flex-1 max-w-6xl w-full mx-auto px-3 sm:px-6 md:px-8 py-5 sm:py-7">
         
         {selectedLesson ? (
           /* Giao diện 1 Bài học chi tiết (30-45 phút) */
@@ -170,26 +170,26 @@ function MainApp() {
           />
         ) : (
           /* Giao diện Trang chủ: Bản đồ bài học (Quest Map) */
-          <div className="space-y-7">
+          <div className="space-y-6 sm:space-y-7">
             
             {/* Banner chào mừng theo Theme */}
-            <div className={`relative overflow-hidden bg-gradient-to-r ${themeConfig.bannerGradientClass} rounded-3xl p-6 sm:p-9 text-white shadow-chunky border-4 transition-all duration-300`}>
-              <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
-                <div className="space-y-2.5 text-center md:text-left">
-                  <div className="inline-flex items-center gap-2 bg-white/25 backdrop-blur-md px-4 py-1.5 rounded-full text-sm font-black border border-white/30">
-                    <Sparkles className="w-4 h-4 text-amber-200" />
+            <div className={`relative overflow-hidden bg-gradient-to-r ${themeConfig.bannerGradientClass} rounded-3xl p-5 sm:p-7 md:p-9 text-white shadow-chunky border-3 sm:border-4 transition-all duration-300`}>
+              <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-5 sm:gap-6">
+                <div className="space-y-2.5 text-center md:text-left min-w-0">
+                  <div className="inline-flex items-center gap-2 bg-white/25 backdrop-blur-md px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-black border border-white/30 text-balance">
+                    <Sparkles className="w-4 h-4 text-amber-200 shrink-0" />
                     <span>Bộ sách Kết nối tri thức với cuộc sống • Trọn bộ 136 Bài</span>
                   </div>
-                  <h1 className="text-3xl sm:text-5xl font-black tracking-tight drop-shadow-sm leading-tight">
+                  <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight drop-shadow-sm leading-tight text-balance">
                     {themeConfig.name}
                   </h1>
-                  <p className="text-white/90 font-extrabold text-base sm:text-lg max-w-2xl leading-relaxed">
+                  <p className="text-white/90 font-extrabold text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed text-balance">
                     {themeConfig.tagline}
                   </p>
                 </div>
 
                 <div className="flex flex-col items-center gap-2.5 shrink-0">
-                  <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl bg-white/20 backdrop-blur-md border-4 border-white/40 flex items-center justify-center text-5xl sm:text-6xl shadow-inner animate-bounce-gentle">
+                  <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-3xl bg-white/20 backdrop-blur-md border-3 sm:border-4 border-white/40 flex items-center justify-center text-4xl sm:text-5xl md:text-6xl shadow-inner animate-bounce-gentle">
                     {themeConfig.mascotEmoji}
                   </div>
                   {/* Nút sao lưu chuyển máy */}
@@ -198,7 +198,7 @@ function MainApp() {
                       sounds.playClick();
                       setShowBackupModal(true);
                     }}
-                    className="text-xs sm:text-sm font-black bg-white/30 hover:bg-white/40 text-white px-4 py-2 rounded-2xl border-2 border-white/40 transition flex items-center gap-2 shadow-sm"
+                    className="text-xs sm:text-sm font-black bg-white/30 hover:bg-white/40 text-white px-3.5 sm:px-4 py-2 rounded-2xl border-2 border-white/40 transition flex items-center gap-2 shadow-sm shrink-0"
                   >
                     <span>💾 Sao lưu / Chuyển máy</span>
                   </button>
@@ -221,21 +221,21 @@ function MainApp() {
             />
 
             {/* Thanh tiến độ tổng quan môn học */}
-            <div className="bg-white/95 p-5 rounded-3xl border-3 border-amber-200 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div className="flex items-center gap-3.5 w-full sm:w-auto">
-                <div className="w-12 h-12 rounded-2xl bg-amber-100 flex items-center justify-center text-2xl shrink-0 border-2 border-amber-300">
-                  <Trophy className="w-6 h-6 text-amber-600" />
+            <div className="bg-white/95 p-4 sm:p-5 rounded-3xl border-3 border-amber-200 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
+              <div className="flex items-center gap-3 w-full sm:w-auto">
+                <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-amber-100 flex items-center justify-center text-2xl shrink-0 border-2 border-amber-300">
+                  <Trophy className="w-5 h-5 sm:w-6 sm:h-6 text-amber-600" />
                 </div>
                 <div>
-                  <span className="text-xs font-black text-slate-500 uppercase tracking-wider">Tiến độ Học kì {currentVolume}</span>
-                  <div className="text-lg sm:text-xl font-black text-slate-800">
+                  <span className="text-[11px] sm:text-xs font-black text-slate-500 uppercase tracking-wider">Tiến độ Học kì {currentVolume}</span>
+                  <div className="text-base sm:text-lg md:text-xl font-black text-slate-800">
                     Đã hoàn thành: <span className="text-emerald-600 font-black">{completedInCurrentVolume}</span> / {allCurrentLessons.length} bài ({completionPercentage}%)
                   </div>
                 </div>
               </div>
 
               {/* Progress bar */}
-              <div className="w-full sm:w-72 h-4 bg-slate-100 rounded-full overflow-hidden border-2 border-slate-200">
+              <div className="w-full sm:w-64 md:w-72 h-3.5 sm:h-4 bg-slate-100 rounded-full overflow-hidden border-2 border-slate-200">
                 <div 
                   className="h-full bg-gradient-to-r from-amber-400 to-emerald-500 transition-all duration-700 rounded-full"
                   style={{ width: `${completionPercentage}%` }}
@@ -244,22 +244,22 @@ function MainApp() {
             </div>
 
             {/* Công cụ Tìm kiếm bài học & Lọc chủ đề */}
-            <div className="space-y-4">
-              <div className="flex flex-col sm:flex-row items-center gap-3.5">
+            <div className="space-y-3 sm:space-y-4">
+              <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-3.5">
                 {/* Thanh tìm kiếm to rõ */}
                 <div className="relative flex-1 w-full">
-                  <Search className="w-6 h-6 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2" />
+                  <Search className="w-5 h-5 sm:w-6 sm:h-6 text-slate-400 absolute left-3.5 sm:left-4 top-1/2 -translate-y-1/2" />
                   <input
                     type="text"
-                    placeholder={`Tìm kiếm trong ${allCurrentLessons.length} bài (nhập số bài hoặc tên bài...)...`}
+                    placeholder={`Tìm kiếm trong ${allCurrentLessons.length} bài (nhập số hoặc tên bài...)...`}
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full pl-12 pr-12 py-3.5 sm:py-4 rounded-2xl border-3 border-slate-200 focus:border-amber-400 focus:outline-none bg-white font-black text-base sm:text-lg text-slate-800 shadow-sm transition"
+                    className="w-full pl-11 sm:pl-12 pr-12 py-3 sm:py-3.5 md:py-4 rounded-2xl border-2 sm:border-3 border-slate-200 focus:border-amber-400 focus:outline-none bg-white font-black text-sm sm:text-base md:text-lg text-slate-800 shadow-sm transition"
                   />
                   {searchQuery && (
                     <button
                       onClick={() => setSearchQuery('')}
-                      className="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs sm:text-sm font-black text-slate-500 hover:text-slate-800 bg-slate-100 px-2.5 py-1.5 rounded-xl"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-xs sm:text-sm font-black text-slate-500 hover:text-slate-800 bg-slate-100 px-2.5 py-1 rounded-xl"
                     >
                       Xóa
                     </button>
@@ -267,15 +267,15 @@ function MainApp() {
                 </div>
 
                 {/* Bộ lọc chủ đề Dropdown */}
-                <div className="w-full sm:w-auto flex items-center gap-2.5 bg-white px-4 py-3.5 rounded-2xl border-3 border-slate-200 shadow-sm">
-                  <Filter className="w-5 h-5 text-slate-500 shrink-0" />
+                <div className="w-full sm:w-auto flex items-center gap-2 bg-white px-3.5 py-3 sm:py-3.5 rounded-2xl border-2 sm:border-3 border-slate-200 shadow-sm shrink-0">
+                  <Filter className="w-4 h-4 sm:w-5 sm:h-5 text-slate-500 shrink-0" />
                   <select
                     value={selectedTopic}
                     onChange={(e) => {
                       sounds.playClick();
                       setSelectedTopic(e.target.value);
                     }}
-                    className="font-black text-sm sm:text-base text-slate-800 bg-transparent focus:outline-none cursor-pointer"
+                    className="font-black text-xs sm:text-sm md:text-base text-slate-800 bg-transparent focus:outline-none cursor-pointer max-w-full truncate"
                   >
                     <option value="all">Tất cả chủ đề ({topics.length} chủ đề)</option>
                     {topics.map((t, idx) => (
@@ -285,14 +285,14 @@ function MainApp() {
                 </div>
               </div>
 
-              {/* Dải nút bấm chủ đề nhanh (Desktop) */}
-              <div className="hidden sm:flex items-center gap-2.5 overflow-x-auto pb-1">
+              {/* Dải nút bấm chủ đề nhanh (Desktop & Tablet) */}
+              <div className="hidden sm:flex items-center gap-2 overflow-x-auto pb-1 scrollbar-thin">
                 <button
                   onClick={() => {
                     sounds.playClick();
                     setSelectedTopic('all');
                   }}
-                  className={`px-4 py-2 rounded-2xl text-sm font-black whitespace-nowrap transition ${
+                  className={`px-3.5 py-2 rounded-2xl text-xs sm:text-sm font-black whitespace-nowrap transition shrink-0 ${
                     selectedTopic === 'all'
                       ? 'bg-amber-500 text-white shadow-sm border-2 border-amber-400'
                       : 'bg-white hover:bg-slate-100 text-slate-700 border-2 border-slate-200'
@@ -307,13 +307,13 @@ function MainApp() {
                       sounds.playClick();
                       setSelectedTopic(topic);
                     }}
-                    className={`px-4 py-2 rounded-2xl text-sm font-black whitespace-nowrap transition flex items-center gap-2 ${
+                    className={`px-3.5 py-2 rounded-2xl text-xs sm:text-sm font-black whitespace-nowrap transition flex items-center gap-1.5 shrink-0 ${
                       selectedTopic === topic
                         ? 'bg-amber-500 text-white shadow-sm border-2 border-amber-400'
                         : 'bg-white hover:bg-slate-100 text-slate-700 border-2 border-slate-200'
                     }`}
                   >
-                    <Layers className="w-4 h-4" />
+                    <Layers className="w-3.5 h-3.5" />
                     <span>{topic}</span>
                   </button>
                 ))}
@@ -322,58 +322,58 @@ function MainApp() {
 
             {/* Danh sách các bài học (Hành trình thám hiểm) */}
             <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <h2 className="text-2xl sm:text-3xl font-black text-slate-900 flex items-center gap-2.5">
-                  <span className="text-3xl">{themeConfig.emoji}</span>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-4">
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-black text-slate-900 flex items-center gap-2 sm:gap-2.5 text-balance min-w-0">
+                  <span className="text-2xl sm:text-3xl shrink-0">{themeConfig.emoji}</span>
                   <span>Bản đồ bài học: {currentSubject === 'math' ? 'Toán' : 'Tiếng Việt'} • Học kì {currentVolume}</span>
                 </h2>
-                <span className="text-sm font-black px-3.5 py-1.5 rounded-2xl bg-white border-2 border-slate-200 text-slate-600 shadow-xs">
+                <span className="self-start sm:self-auto text-xs sm:text-sm font-black px-3.5 py-1.5 rounded-2xl bg-white border-2 border-slate-200 text-slate-600 shadow-xs shrink-0">
                   Hiển thị {filteredLessons.length} bài
                 </span>
               </div>
 
               {/* Grid các bài học theo Theme Card */}
               {filteredLessons.length > 0 ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                   {filteredLessons.map((lesson) => {
                     const isDone = progress.completedLessons.includes(lesson.id);
 
                     return (
                       <div
                         key={lesson.id}
-                        className={`${themeConfig.cardClass} p-6 transition-all flex flex-col justify-between gap-4 group`}
+                        className={`${themeConfig.cardClass} p-5 sm:p-6 transition-all flex flex-col justify-between gap-4 group`}
                       >
-                        <div className="space-y-3">
+                        <div className="space-y-2.5 sm:space-y-3">
                           
                           {/* Unit badge & Trạng thái */}
-                          <div className="flex items-center justify-between">
-                            <span className="text-xs sm:text-sm font-black px-3 py-1 rounded-xl bg-slate-100 text-slate-700 border border-slate-200">
+                          <div className="flex items-center justify-between gap-2">
+                            <span className="text-xs sm:text-sm font-black px-2.5 py-1 rounded-xl bg-slate-100 text-slate-700 border border-slate-200 shrink-0">
                               Bài {lesson.lessonNumber}
                             </span>
 
                             {isDone ? (
-                              <span className="flex items-center gap-1.5 text-xs sm:text-sm font-black text-emerald-700 bg-emerald-50 px-3 py-1 rounded-xl border border-emerald-300">
-                                <CheckCircle className="w-4 h-4 text-emerald-600" /> Đã nắm chắc
+                              <span className="flex items-center gap-1.5 text-xs sm:text-sm font-black text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-xl border border-emerald-300 shrink-0">
+                                <CheckCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600" /> Đã vững
                               </span>
                             ) : (
-                              <span className="flex items-center gap-1.5 text-xs sm:text-sm font-black text-amber-700 bg-amber-50 px-3 py-1 rounded-xl border border-amber-300">
-                                <Clock className="w-4 h-4 text-amber-500" /> {lesson.estimatedMinutes} phút
+                              <span className="flex items-center gap-1.5 text-xs sm:text-sm font-black text-amber-700 bg-amber-50 px-2.5 py-1 rounded-xl border border-amber-300 shrink-0">
+                                <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-500" /> {lesson.estimatedMinutes}p
                               </span>
                             )}
                           </div>
 
                           {/* Tiêu đề bài học */}
-                          <h3 className="font-black text-xl text-slate-900 group-hover:text-amber-600 transition leading-snug line-clamp-2">
+                          <h3 className="font-black text-lg sm:text-xl text-slate-900 group-hover:text-amber-600 transition leading-snug line-clamp-2 text-balance">
                             {lesson.title}
                           </h3>
 
                           {/* Tagline giải thích ngắn */}
-                          <p className="text-sm text-slate-600 font-bold line-clamp-2 leading-relaxed">
+                          <p className="text-xs sm:text-sm text-slate-600 font-bold line-clamp-2 leading-relaxed">
                             {lesson.tagline}
                           </p>
 
                           {/* Đơn vị chủ đề */}
-                          <div className="text-xs font-black text-slate-400 uppercase tracking-wide">
+                          <div className="text-[11px] sm:text-xs font-black text-slate-400 uppercase tracking-wide truncate">
                             {lesson.unit}
                           </div>
 
@@ -385,14 +385,14 @@ function MainApp() {
                             sounds.playClick();
                             setSelectedLesson(lesson);
                           }}
-                          className={`w-full py-4 px-5 rounded-2xl font-black text-base sm:text-lg flex items-center justify-center gap-2.5 border-3 transition-all transform active:translate-y-1 ${
+                          className={`w-full py-3.5 sm:py-4 px-4 sm:px-5 rounded-2xl font-black text-sm sm:text-base md:text-lg flex items-center justify-center gap-2 border-3 transition-all transform active:translate-y-1 ${
                             isDone
                               ? 'bg-emerald-50 hover:bg-emerald-100 text-emerald-900 border-emerald-300'
                               : `${themeConfig.buttonPrimaryClass}`
                           }`}
                         >
-                          <span>{isDone ? 'Ôn lại bài này' : 'Bắt đầu ôn tập (35 phút)'}</span>
-                          <ArrowRight className="w-5 h-5" />
+                          <span>{isDone ? 'Ôn lại bài này' : 'Bắt đầu học (35 phút)'}</span>
+                          <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
                         </button>
 
                       </div>
@@ -400,10 +400,10 @@ function MainApp() {
                   })}
                 </div>
               ) : (
-                <div className="bg-white p-12 rounded-3xl border-2 border-slate-200 text-center space-y-3">
-                  <span className="text-5xl">🔍</span>
-                  <h3 className="text-xl font-black text-slate-800">Không tìm thấy bài học nào phù hợp</h3>
-                  <p className="text-sm text-slate-500 font-bold">Hãy thử tìm theo số bài (ví dụ: "10") hoặc chọn "Tất cả chủ đề"</p>
+                <div className="bg-white p-8 sm:p-12 rounded-3xl border-2 border-slate-200 text-center space-y-3">
+                  <span className="text-4xl sm:text-5xl">🔍</span>
+                  <h3 className="text-lg sm:text-xl font-black text-slate-800">Không tìm thấy bài học nào phù hợp</h3>
+                  <p className="text-xs sm:text-sm text-slate-500 font-bold">Hãy thử tìm theo số bài (ví dụ: "10") hoặc chọn "Tất cả chủ đề"</p>
                 </div>
               )}
 

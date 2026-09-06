@@ -58,30 +58,30 @@ export const FinishTab: React.FC<FinishTabProps> = ({
     <div className="max-w-3xl mx-auto space-y-7">
       
       {!speedDone ? (
-        <div className="bg-white p-7 sm:p-8 rounded-3xl border-4 border-amber-300 shadow-card-pop space-y-6">
-          <div className="flex items-center justify-between border-b-2 pb-4 border-slate-100">
+        <div className="bg-white p-5 sm:p-8 rounded-3xl border-3 sm:border-4 border-amber-300 shadow-card-pop space-y-5 sm:space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b-2 pb-4 border-slate-100">
             <div className="flex items-center gap-3">
-              <Zap className="w-8 h-8 text-amber-500 fill-amber-400" />
+              <Zap className="w-7 h-7 sm:w-8 sm:h-8 text-amber-500 fill-amber-400 shrink-0" />
               <div>
-                <h3 className="font-black text-xl sm:text-2xl text-slate-900">Thử Thách Tốc Độ Về Đích</h3>
-                <p className="text-sm text-slate-500 font-extrabold">Chớp mắt trả lời 3 câu phản xạ nhanh!</p>
+                <h3 className="font-black text-lg sm:text-xl md:text-2xl text-slate-900 text-balance">Thử Thách Tốc Độ Về Đích</h3>
+                <p className="text-xs sm:text-sm text-slate-500 font-extrabold">Chớp mắt trả lời 3 câu phản xạ nhanh!</p>
               </div>
             </div>
-            <span className="text-sm font-black px-4 py-1.5 bg-amber-100 text-amber-900 rounded-full border-2 border-amber-300">
+            <span className="self-start sm:self-auto text-xs sm:text-sm font-black px-3.5 py-1 bg-amber-100 text-amber-900 rounded-full border-2 border-amber-300 shrink-0">
               Câu {speedIndex + 1} / {speedQuestions.length}
             </span>
           </div>
 
-          <div className="text-xl sm:text-2xl font-black text-slate-900 leading-relaxed">
+          <div className="text-lg sm:text-xl md:text-2xl font-black text-slate-900 leading-relaxed text-balance">
             <KaTeXView content={currentSpeedQ.prompt} />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
             {currentSpeedQ.options.map((option, idx) => (
               <button
                 key={idx}
                 onClick={() => handleSpeedAnswer(option)}
-                className="p-5 rounded-2xl bg-slate-50 hover:bg-amber-100 border-3 border-slate-200 hover:border-amber-400 font-black text-base sm:text-lg text-slate-900 transition text-left transform active:translate-y-0.5 shadow-xs"
+                className="p-4 sm:p-5 rounded-2xl bg-slate-50 hover:bg-amber-100 border-2 sm:border-3 border-slate-200 hover:border-amber-400 font-black text-sm sm:text-base md:text-lg text-slate-900 transition text-left transform active:translate-y-0.5 shadow-xs"
               >
                 <KaTeXView content={option} />
               </button>
@@ -91,17 +91,17 @@ export const FinishTab: React.FC<FinishTabProps> = ({
       ) : (
         <div className="space-y-7 animate-bounce-gentle">
           
-          <div className="bg-gradient-to-b from-amber-100 via-orange-50 to-white p-7 sm:p-10 rounded-3xl border-4 border-amber-400 shadow-card-pop text-center space-y-5">
+          <div className="bg-gradient-to-b from-amber-100 via-orange-50 to-white p-5 sm:p-10 rounded-3xl border-3 sm:border-4 border-amber-400 shadow-card-pop text-center space-y-4 sm:space-y-5">
             
-            <div className="inline-flex p-5 rounded-3xl bg-amber-400 border-4 border-amber-500 shadow-chunky-sm">
-              <Trophy className="w-20 h-20 text-white" />
+            <div className="inline-flex p-4 sm:p-5 rounded-3xl bg-amber-400 border-3 sm:border-4 border-amber-500 shadow-chunky-sm">
+              <Trophy className="w-16 h-16 sm:w-20 sm:h-20 text-white" />
             </div>
 
             <div className="space-y-1.5">
-              <h2 className="text-3xl sm:text-4xl font-black text-amber-950 tracking-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-amber-950 tracking-tight text-balance">
                 XUẤT SẮC HOÀN THÀNH BÀI HỌC!
               </h2>
-              <p className="text-base sm:text-lg font-bold text-slate-700">
+              <p className="text-sm sm:text-base md:text-lg font-bold text-slate-700 text-balance">
                 Bạn đã chinh phục trọn vẹn: <span className="text-amber-800 font-black">{lesson.title}</span>
               </p>
             </div>

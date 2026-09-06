@@ -4,7 +4,20 @@
 
 @layer base {
   html {
-    font-size: 18px; /* Tăng kích thước font gốc từ 16px lên 18px cho học sinh tiểu học dễ đọc */
+    font-size: 16px; /* Cơ sở 16px cho mobile để không bị vỡ giao diện */
+    overflow-x: hidden;
+  }
+
+  @media (min-width: 640px) {
+    html {
+      font-size: 17px; /* 17px tối ưu cho iPad / tablet */
+    }
+  }
+
+  @media (min-width: 1024px) {
+    html {
+      font-size: 18px; /* 18px chuẩn cho laptop/desktop giúp học sinh dễ đọc */
+    }
   }
 
   body {
@@ -12,11 +25,24 @@
     font-size: 1.05rem;
     line-height: 1.6;
     letter-spacing: 0.01em;
+    overflow-x: hidden;
+  }
+
+  /* Cân bằng dòng tiêu đề chống xô lệch chữ và rớt từ */
+  h1, h2, h3, h4, h5, h6, .text-balance {
+    text-wrap: balance;
+    overflow-wrap: break-word;
+  }
+
+  /* Tránh từ mồ côi và ngắt dòng êm mắt cho văn bản học tập */
+  p, li, blockquote {
+    text-wrap: pretty;
+    overflow-wrap: break-word;
   }
 
   /* Nút bấm cảm ứng thân thiện cho học sinh */
   button {
-    min-height: 48px;
+    min-height: 44px;
     touch-action: manipulation;
   }
 }
