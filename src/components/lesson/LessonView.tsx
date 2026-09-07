@@ -66,7 +66,7 @@ export const LessonView: React.FC<LessonViewProps> = ({
           </div>
         </div>
 
-        {/* Đồng hồ tên lửa 35-40 phút */}
+        {/* Đồng hồ tên lửa 25 phút */}
         <div className="w-full lg:w-80 shrink-0">
           <RocketTimer totalMinutes={lesson.estimatedMinutes} />
         </div>

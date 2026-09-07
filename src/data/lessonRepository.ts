@@ -2,6 +2,10 @@ import { Lesson, Question, SpeedQuestion } from '../types';
 import { mathLessons } from './mathLessons';
 import { vietnameseLessons } from './vietnameseLessons';
 import { mathLessonsRegistry, vietnameseLessonsRegistry, LessonMeta } from './registry';
+import { mathQuestionsT1 } from './questions/mathGrade5T1';
+import { mathQuestionsT2 } from './questions/mathGrade5T2';
+import { vietnameseQuestionsT1 } from './questions/vietnameseGrade5T1';
+import { vietnameseQuestionsT2 } from './questions/vietnameseGrade5T2';
 
 // Bản đồ các bài học đã được biên soạn chi tiết chuyên sâu
 const detailedLessonsMap: Record<string, Lesson> = {};
@@ -1256,9 +1260,25 @@ function generateVietnameseQuestions(meta: LessonMeta): { practiceQuestions: Que
 function createStandardLesson(meta: LessonMeta): Lesson {
   const isMath = meta.subject === 'math';
 
-  if (isMath) {
-    const { practiceQuestions, speedQuestions } = generateMathQuestions(meta);
+  // Tra cứu câu hỏi đã được biên soạn chi tiết theo từng bài học SGK Kết nối tri thức
+  const questionSet = isMath
+    ? (mathQuestionsT1[meta.id] || mathQuestionsT2[meta.id])
+    : (vietnameseQuestionsT1[meta.id] || vietnameseQuestionsT2[meta.id]);
 
+  let practiceQuestions: Question[];
+  let speedQuestions: SpeedQuestion[];
+
+  if (questionSet) {
+    practiceQuestions = questionSet.practiceQuestions.map(q => shuffleOptions(q));
+    speedQuestions = questionSet.speedQuestions.map(q => shuffleOptions(q));
+  } else {
+    // Fallback nếu bài học chưa có trong từ điển câu hỏi
+    const fallback = isMath ? generateMathQuestions(meta) : generateVietnameseQuestions(meta);
+    practiceQuestions = fallback.practiceQuestions;
+    speedQuestions = fallback.speedQuestions;
+  }
+
+  if (isMath) {
     return {
       id: meta.id,
       subject: 'math',
@@ -1321,8 +1341,6 @@ function createStandardLesson(meta: LessonMeta): Lesson {
     };
   } else {
     // Môn Tiếng Việt
-    const { practiceQuestions, speedQuestions } = generateVietnameseQuestions(meta);
-
     return {
       id: meta.id,
       subject: 'vietnamese',

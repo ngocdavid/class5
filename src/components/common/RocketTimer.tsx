@@ -7,7 +7,7 @@ interface RocketTimerProps {
   onTimeOut?: () => void;
 }
 
-export const RocketTimer: React.FC<RocketTimerProps> = ({ totalMinutes = 35, onTimeOut }) => {
+export const RocketTimer: React.FC<RocketTimerProps> = ({ totalMinutes = 25, onTimeOut }) => {
   const [secondsLeft, setSecondsLeft] = useState(totalMinutes * 60);
   const [isActive, setIsActive] = useState(true);
 

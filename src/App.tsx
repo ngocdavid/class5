@@ -420,7 +420,7 @@ function MainApp() {
                               : `${themeConfig.buttonPrimaryClass}`
                           }`}
                         >
-                          <span>{isDone ? 'Ôn lại bài này' : 'Bắt đầu học (35 phút)'}</span>
+                          <span>{isDone ? 'Ôn lại bài này' : 'Bắt đầu học (25 phút)'}</span>
                           <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
                         </button>
 

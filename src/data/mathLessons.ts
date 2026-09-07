@@ -8,7 +8,7 @@ export const mathLessons: Lesson[] = [
     lessonNumber: 10,
     title: 'Khái niệm số thập phân',
     unit: 'Chủ đề 2: Số thập phân',
-    estimatedMinutes: 35,
+    estimatedMinutes: 25,
     tagline: 'Làm quen với số có dấu phẩy - bí quyết chia nhỏ mọi thứ!',
     mascotGreeting: 'Chào bạn! Hôm nay Rô-bốt sẽ giúp bạn làm quen với số thập phân qua thước đo trực quan, nhìn hình là hiểu liền!',
     guide: {
@@ -130,6 +130,28 @@ export const mathLessons: Lesson[] = [
         correctAnswer: '3,8 m',
         hint: '$1\\text{ dm} = \\frac{1}{10}\\text{ m} = 0,1\\text{ m}$. Vậy $8\\text{ dm} = 0,8\\text{ m}$.',
         explanation: '$3\\text{ m } 8\\text{ dm} = 3\\text{ m} + \\frac{8}{10}\\text{ m} = 3,8\\text{ m}$.'
+      },
+      {
+        id: 'm10-q7',
+        level: 2,
+        levelName: 'Vững vàng',
+        type: 'multiple_choice',
+        prompt: 'Hỗn số $2\\frac{3}{100}$ viết dưới dạng số thập phân là:',
+        options: ['2,3', '2,03', '2,003', '0,23'],
+        correctAnswer: '2,03',
+        hint: 'Phần nguyên là 2, phần thập phân là 3 phần trăm (hai chữ số sau dấu phẩy).',
+        explanation: '$2\\frac{3}{100} = 2 + 0,03 = 2,03$.'
+      },
+      {
+        id: 'm10-q8',
+        level: 3,
+        levelName: 'Thử thách',
+        type: 'multiple_choice',
+        prompt: 'Tìm chữ số $x$ thích hợp biết: $5,x7 < 5,17$. Giá trị của $x$ là:',
+        options: ['0', '1', '2', 'Không có'],
+        correctAnswer: '0',
+        hint: 'So sánh hàng phần mười: $x$ phải bé hơn 1.',
+        explanation: 'Vì phần nguyên bằng nhau ($5 = 5$) và hàng phần trăm bằng nhau ($7 = 7$), để $5,x7 < 5,17$ thì $x < 1 \\Rightarrow x = 0$.'
       }
     ],
     speedQuestions: [
@@ -163,7 +185,7 @@ export const mathLessons: Lesson[] = [
     lessonNumber: 19,
     title: 'Phép cộng số thập phân',
     unit: 'Chủ đề 4: Các phép tính với số thập phân',
-    estimatedMinutes: 40,
+    estimatedMinutes: 25,
     tagline: 'Đặt tính thẳng cột dấu phẩy - cộng như số tự nhiên!',
     mascotGreeting: 'Cộng số thập phân dễ như ăn kẹo! Bạn chỉ cần nhớ "thần chú": Dấu phẩy thẳng cột như hình minh họa bên dưới!',
     guide: {
@@ -281,6 +303,28 @@ export const mathLessons: Lesson[] = [
         correctAnswer: '4,0 lít',
         hint: 'Bước 1: Tìm bình thứ hai ($1,75 + 0,5 = 2,25$ l). Bước 2: Lấy $1,75 + 2,25$.',
         explanation: 'Bình hai có: $1,75 + 0,5 = 2,25$ lít. Cả hai bình có: $1,75 + 2,25 = 4,0$ lít.'
+      },
+      {
+        id: 'm19-q7',
+        level: 2,
+        levelName: 'Vững vàng',
+        type: 'multiple_choice',
+        prompt: 'Một mảnh vườn hình chữ nhật có chiều rộng $15,5\\text{ m}$, chiều dài hơn chiều rộng $4,5\\text{ m}$. Chiều dài mảnh vườn là:',
+        options: ['20 m', '19,5 m', '20,5 m', '21 m'],
+        correctAnswer: '20 m',
+        hint: 'Lấy chiều rộng cộng thêm 4,5 m: $15,5 + 4,5$.',
+        explanation: 'Chiều dài mảnh vườn: $15,5 + 4,5 = 20,0\\text{ m} = 20\\text{ m}$.'
+      },
+      {
+        id: 'm19-q8',
+        level: 3,
+        levelName: 'Thử thách',
+        type: 'multiple_choice',
+        prompt: 'Tính bằng cách thuận tiện: $1,25 + 3,79 + 8,75 + 6,21 = ?$',
+        options: ['20', '19', '21', '18,5'],
+        correctAnswer: '20',
+        hint: 'Nhóm các số có phần thập phân cộng lại tròn 1: $(1,25 + 8,75) + (3,79 + 6,21)$.',
+        explanation: '$(1,25 + 8,75) + (3,79 + 6,21) = 10 + 10 = 20$.'
       }
     ],
     speedQuestions: [
@@ -314,7 +358,7 @@ export const mathLessons: Lesson[] = [
     lessonNumber: 25,
     title: 'Hình tam giác. Diện tích hình tam giác',
     unit: 'Chủ đề 5: Một số hình phẳng, chu vi và diện tích',
-    estimatedMinutes: 40,
+    estimatedMinutes: 25,
     tagline: 'Cắt ghép thần kỳ: Đáy nhân chiều cao chia đôi!',
     mascotGreeting: 'Bạn có biết vì sao diện tích tam giác lại phải chia 2 không? Xem hình ghép màu bên dưới là hiểu ngay bản chất nhé!',
     guide: {
@@ -440,6 +484,28 @@ export const mathLessons: Lesson[] = [
         correctAnswer: '180 kg',
         hint: 'Bước 1: Tính diện tích thửa ruộng $(30 \\times 20 : 2)$. Bước 2: Nhân với 0,6 kg.',
         explanation: 'Diện tích ruộng: $(30 \\times 20) : 2 = 300\\text{ m}^2$. Số thóc thu hoạch: $300 \\times 0,6 = 180\\text{ kg}$.'
+      },
+      {
+        id: 'm25-q7',
+        level: 2,
+        levelName: 'Vững vàng',
+        type: 'multiple_choice',
+        prompt: 'Một hình tam giác vuông có độ dài hai cạnh góc vuông lần lượt là $6\\text{ cm}$ và $8\\text{ cm}$. Diện tích của hình tam giác vuông đó là:',
+        options: ['48 cm²', '24 cm²', '14 cm²', '28 cm²'],
+        correctAnswer: '24 cm²',
+        hint: 'Trong tam giác vuông, diện tích bằng tích hai cạnh góc vuông chia 2: $(6 \\times 8) : 2$.',
+        explanation: 'Diện tích tam giác vuông: $(6 \\times 8) : 2 = 48 : 2 = 24\\text{ cm}^2$.'
+      },
+      {
+        id: 'm25-q8',
+        level: 3,
+        levelName: 'Thử thách',
+        type: 'multiple_choice',
+        prompt: 'Một mảnh đất hình chữ nhật có chiều dài $20\\text{ m}$, chiều rộng $12\\text{ m}$. Người ta bớt ra một góc hình tam giác vuông có hai cạnh góc vuông là $6\\text{ m}$ và $8\\text{ m}$ để làm bồn hoa. Diện tích đất còn lại là:',
+        options: ['216 m²', '240 m²', '192 m²', '228 m²'],
+        correctAnswer: '216 m²',
+        hint: 'Bước 1: Diện tích HCN ($20 \\times 12$). Bước 2: Diện tích bồn hoa ($(6 \\times 8) : 2$). Bước 3: Lấy diện tích HCN trừ đi bồn hoa.',
+        explanation: 'Diện tích HCN: $20 \\times 12 = 240\\text{ m}^2$. Diện tích bồn hoa: $(6 \\times 8) : 2 = 24\\text{ m}^2$. Diện tích còn lại: $240 - 24 = 216\\text{ m}^2$.'
       }
     ],
     speedQuestions: [

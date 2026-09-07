@@ -2,13 +2,13 @@ import { Lesson } from '../types';
 
 export const vietnameseLessons: Lesson[] = [
   {
-    id: 'vn-tu-dong-nghia',
+    id: 'vn-b2',
     subject: 'vietnamese',
     volume: 1,
-    lessonNumber: 3,
-    title: 'Luyện từ và câu: Từ đồng nghĩa',
+    lessonNumber: 2,
+    title: 'Luyện từ và câu: Luyện tập về từ đồng nghĩa',
     unit: 'Chủ điểm 1: Thế giới tuổi thơ',
-    estimatedMinutes: 35,
+    estimatedMinutes: 25,
     tagline: 'Khác chữ mà cùng nghĩa - bí quyết viết văn không bị lặp từ!',
     mascotGreeting: 'Chào bạn! Muốn viết văn tả cảnh thật hay mà không bị lặp từ? Hãy để Rô-bốt bật mí bí mật của Từ đồng nghĩa nhé!',
     guide: {
@@ -139,6 +139,33 @@ export const vietnameseLessons: Lesson[] = [
         correctAnswer: 'Chú cún con đã hi sinh sau một trận ốm nặng.',
         hint: 'Từ "hi sinh" chỉ dùng cho con người có cống hiến cao đẹp, không dùng cho vật nuôi.',
         explanation: 'Với con vật (chú cún con) bị ốm chết, chỉ dùng từ "chết", không dùng từ "hi sinh".'
+      },
+      {
+        id: 'vn-tdn-q7',
+        level: 2,
+        levelName: 'Vững vàng',
+        type: 'multiple_choice',
+        prompt: 'Tìm từ thích hợp điền vào chỗ chấm: "Dưới ánh nắng vàng rực rỡ, cánh đồng lúa chín trải rộng ..."',
+        options: ['mênh mông', 'loắt choắt', 'chen chúc', 'sầm uất'],
+        correctAnswer: 'mênh mông',
+        hint: 'Chọn từ đồng nghĩa với "bao la" để miêu tả cánh đồng lúa rộng lớn.',
+        explanation: 'Từ "mênh mông" miêu tả không gian cánh đồng lúa rộng lớn đến tận chân trời.'
+      },
+      {
+        id: 'vn-tdn-q8',
+        level: 3,
+        levelName: 'Thử thách',
+        type: 'multiple_choice',
+        prompt: 'Trong các nhóm từ sau, nhóm từ nào gồm các từ ĐỒNG NGHĨA HOÀN TOÀN (có thể thay thế cho nhau trong mọi văn cảnh)?',
+        options: [
+          'xe lửa - tàu hỏa - hỏa xa',
+          'ăn - xơi - chén',
+          'mẹ - u - mẹ già',
+          'chết - hi sinh - toi mạng'
+        ],
+        correctAnswer: 'xe lửa - tàu hỏa - hỏa xa',
+        hint: 'Từ đồng nghĩa hoàn toàn là những từ không mang sắc thái tình cảm phân biệt (như kính trọng hay khinh miệt).',
+        explanation: '"Xe lửa", "tàu hỏa", "hỏa xa" là các từ đồng nghĩa hoàn toàn chỉ cùng một phương tiện giao thông, không phân biệt sắc thái tình cảm.'
       }
     ],
     speedQuestions: [
@@ -166,13 +193,13 @@ export const vietnameseLessons: Lesson[] = [
     ]
   },
   {
-    id: 'vn-tu-dong-am-nhieu-nghia',
+    id: 'vn-b6',
     subject: 'vietnamese',
     volume: 1,
-    lessonNumber: 5,
+    lessonNumber: 6,
     title: 'Luyện từ và câu: Từ nhiều nghĩa & Từ đồng âm',
     unit: 'Chủ điểm 1: Thế giới tuổi thơ',
-    estimatedMinutes: 35,
+    estimatedMinutes: 25,
     tagline: 'Phân biệt siêu dễ: Cùng họ hàng (nhiều nghĩa) hay người dưng trùng tên (đồng âm)?',
     mascotGreeting: 'Đây là bài học mà 90% các bạn học sinh hay nhầm nhất! Nhìn sơ đồ so sánh hình ảnh bên dưới là bạn phân biệt được ngay!',
     guide: {
@@ -303,6 +330,38 @@ export const vietnameseLessons: Lesson[] = [
         correctAnswer: 'Là từ nhiều nghĩa (chuyển nghĩa theo cảm giác dễ chịu)',
         hint: 'Vị ngọt ở lưỡi tạo cảm giác dễ chịu, giọng nói êm ái cũng tạo cho tai cảm giác êm dịu, dễ chịu.',
         explanation: 'Từ "ngọt" được chuyển nghĩa theo phương thức ẩn dụ cảm giác (từ vị giác của lưỡi sang thính giác của tai) ➔ Từ nhiều nghĩa.'
+      },
+      {
+        id: 'vn-tam-q7',
+        level: 2,
+        levelName: 'Vững vàng',
+        type: 'multiple_choice',
+        prompt: 'Từ "lá" trong trường hợp nào dưới đây mang NGHĨA CHUYỂN?',
+        options: [
+          'Lá gan',
+          'Lá bàng',
+          'Lá chuối',
+          'Lá sen'
+        ],
+        correctAnswer: 'Lá gan',
+        hint: 'Nghĩa gốc của "lá" là bộ phận của cây, thường có màu xanh và mỏng.',
+        explanation: '"Lá gan", "lá phổi", "lá thư", "lá cờ" đều là nghĩa chuyển dựa trên nét tương đồng về hình dáng mỏng, dẹt.'
+      },
+      {
+        id: 'vn-tam-q8',
+        level: 3,
+        levelName: 'Thử thách',
+        type: 'multiple_choice',
+        prompt: 'Câu đố: "Trùng trục như con chó thui / Chín mắt, chín mũi, chín đuôi, chín đầu." - Từ "chín" trong câu đố là hiện tượng gì?',
+        options: [
+          'Từ đồng âm (chín nấu chín thức ăn và số chín 9)',
+          'Từ nhiều nghĩa',
+          'Từ đồng nghĩa',
+          'Từ trái nghĩa'
+        ],
+        correctAnswer: 'Từ đồng âm (chín nấu chín thức ăn và số chín 9)',
+        hint: 'Chó thui đã chín (nấu chín thức ăn) chứ không phải có 9 cái mắt, 9 cái mũi!',
+        explanation: 'Từ "chín" thứ nhất (thức ăn được nấu chín) và số từ "chín" (số 9) là hiện tượng từ đồng âm, tạo nên nét hóm hỉnh cho câu đố dân gian.'
       }
     ],
     speedQuestions: [
@@ -330,13 +389,13 @@ export const vietnameseLessons: Lesson[] = [
     ]
   },
   {
-    id: 'vn-doc-hieu-bai-1',
+    id: 'vn-b1',
     subject: 'vietnamese',
     volume: 1,
     lessonNumber: 1,
     title: 'Đọc hiểu: Thanh âm của gió',
     unit: 'Chủ điểm 1: Thế giới tuổi thơ',
-    estimatedMinutes: 35,
+    estimatedMinutes: 25,
     tagline: 'Lắng nghe giai điệu thiên nhiên tuổi thơ qua tiếng gió reo!',
     mascotGreeting: 'Chào bạn! Bạn đã bao giờ nghe thấy tiếng gió thổi qua bụi tre hay rặng phi lao chưa? Hãy ngắm nhìn bức tranh làng quê và cùng đọc nhé!',
     guide: {
@@ -473,6 +532,33 @@ export const vietnameseLessons: Lesson[] = [
         correctAnswer: 'Hãy biết mở rộng tâm hồn, yêu quý và lắng nghe vẻ đẹp kỳ diệu của thiên nhiên xung quanh',
         hint: 'Thông điệp ý nghĩa về việc nuôi dưỡng tâm hồn tuổi thơ trong sáng.',
         explanation: 'Bài văn giáo dục tình yêu quê hương, đất nước, thái độ trân trọng và bảo vệ thiên nhiên tươi đẹp.'
+      },
+      {
+        id: 'vn-b1-q7',
+        level: 2,
+        levelName: 'Vững vàng',
+        type: 'multiple_choice',
+        prompt: 'Các từ ngữ "vi vu", "xào xạc", "rì rào" trong bài đọc thuộc nhóm từ ngữ nào?',
+        options: ['Từ tượng thanh', 'Từ tượng hình', 'Đại từ xưng hô', 'Quan hệ từ'],
+        correctAnswer: 'Từ tượng thanh',
+        hint: 'Đây là các từ mô phỏng lại âm thanh của tiếng gió và cây cỏ.',
+        explanation: 'Từ tượng thanh là từ mô phỏng âm thanh tự nhiên hoặc con người, giúp người đọc như nghe thấy tiếng gió reo.'
+      },
+      {
+        id: 'vn-b1-q8',
+        level: 3,
+        levelName: 'Thử thách',
+        type: 'multiple_choice',
+        prompt: 'Biện pháp nghệ thuật nào làm cho tiếng gió trong bài đọc trở nên gần gũi, như một người bạn thân thiết của trẻ thơ?',
+        options: [
+          'Biện pháp nhân hóa (gán cho gió hành động, cảm xúc như con người)',
+          'Biện pháp nói quá',
+          'Biện pháp đảo ngữ',
+          'Biện pháp điệp vần'
+        ],
+        correctAnswer: 'Biện pháp nhân hóa (gán cho gió hành động, cảm xúc như con người)',
+        hint: 'Gió biết hát, biết thì thầm, biết đùa nghịch cùng cỏ cây hoa lá.',
+        explanation: 'Tác giả sử dụng biện pháp nhân hóa để biến cơn gió vô tri thành một người bạn đồng hành sống động, biết sẻ chia niềm vui cùng tuổi thơ.'
       }
     ],
     speedQuestions: [

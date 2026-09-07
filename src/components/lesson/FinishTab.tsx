@@ -174,7 +174,7 @@ export const FinishTab: React.FC<FinishTabProps> = ({
             <Heart className="w-10 h-10 text-blue-500 shrink-0" />
             <div className="text-sm sm:text-base text-blue-950 font-bold leading-relaxed">
               <span className="block font-black text-lg">Rô-bốt dặn bạn:</span>
-              Nhiệm vụ hôm nay đã hoàn thành xuất sắc trong 35 phút! Hãy tắt máy tính, uống một cốc nước ấm và vận động nhẹ nhàng để bảo vệ mắt nhé!
+              Nhiệm vụ hôm nay đã hoàn thành xuất sắc trong 25 phút! Hãy tắt máy tính, uống một cốc nước ấm và vận động nhẹ nhàng để bảo vệ mắt nhé!
             </div>
           </div>
 
