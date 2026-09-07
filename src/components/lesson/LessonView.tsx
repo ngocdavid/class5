@@ -1,32 +1,64 @@
 import React, { useState } from 'react';
-import { Lesson } from '../../types';
+import { Lesson, LessonScoreDetail } from '../../types';
 import { GuideTab } from './GuideTab';
 import { PracticeTab } from './PracticeTab';
 import { FinishTab } from './FinishTab';
 import { RocketTimer } from '../common/RocketTimer';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, RotateCcw } from 'lucide-react';
 import { sounds } from '../../utils/sound';
 
 interface LessonViewProps {
   lesson: Lesson;
+  previousScore?: number | LessonScoreDetail;
   onGoBack: () => void;
   onAddStar: (amount: number) => void;
-  onCompleteLesson: (lessonId: string) => void;
+  onCompleteLesson: (
+    lessonId: string,
+    practiceScore: number,
+    speedScore: number,
+    practiceTotal: number,
+    speedTotal: number
+  ) => void;
 }
 
 export const LessonView: React.FC<LessonViewProps> = ({
   lesson,
+  previousScore,
   onGoBack,
   onAddStar,
   onCompleteLesson,
 }) => {
   const [activeTab, setActiveTab] = useState<'guide' | 'practice' | 'finish'>('guide');
   const [practiceScore, setPracticeScore] = useState(0);
+  const [attemptKey, setAttemptKey] = useState(0);
+
+  const prevData = previousScore;
+  const attempts = typeof prevData === 'object' ? (prevData.attempts || 0) : (prevData !== undefined ? 1 : 0);
+  const prevTotal = typeof prevData === 'number' ? prevData : prevData?.totalScore;
+  const prevQuestions = typeof prevData === 'object' ? (prevData.totalQuestions || 11) : 11;
+  const prevPercentage = typeof prevData === 'object'
+    ? prevData.percentage
+    : (prevTotal !== undefined ? Math.round((prevTotal / prevQuestions) * 100) : null);
 
   const handleFinishPractice = (score: number) => {
     setPracticeScore(score);
     setActiveTab('finish');
-    onCompleteLesson(lesson.id);
+  };
+
+  const handleFinishLesson = (pScore: number, sScore: number) => {
+    onCompleteLesson(
+      lesson.id,
+      pScore,
+      sScore,
+      lesson.practiceQuestions.length,
+      lesson.speedQuestions.length
+    );
+  };
+
+  const handleRestart = (targetTab: 'practice' | 'guide' = 'practice') => {
+    setPracticeScore(0);
+    setAttemptKey(prev => prev + 1);
+    setActiveTab(targetTab);
   };
 
   const isMath = lesson.subject === 'math';
@@ -59,6 +91,23 @@ export const LessonView: React.FC<LessonViewProps> = ({
               <span className="text-xs sm:text-sm text-slate-500 font-black shrink-0">
                 Bài {lesson.lessonNumber}
               </span>
+              {attempts > 0 && (
+                <span className="px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs sm:text-sm font-black bg-purple-100 text-purple-900 border border-purple-300 flex items-center gap-1.5 shrink-0" title={`Đã luyện tập ${attempts} lần`}>
+                  <RotateCcw className="w-3.5 h-3.5 text-purple-600" />
+                  <span>Đã luyện tập: {attempts} lần</span>
+                </span>
+              )}
+              {prevTotal !== undefined && (
+                <span className={`px-2.5 sm:px-3.5 py-0.5 sm:py-1 rounded-full text-xs sm:text-sm font-black border shrink-0 ${
+                  prevPercentage === 100
+                    ? 'bg-amber-100 text-amber-900 border-amber-300'
+                    : prevPercentage && prevPercentage >= 80
+                    ? 'bg-emerald-100 text-emerald-900 border-emerald-300'
+                    : 'bg-sky-100 text-sky-900 border-sky-300'
+                }`}>
+                  {prevPercentage === 100 ? '🏆' : '⭐'} Kỷ lục: {prevTotal}/{prevQuestions} ({prevPercentage}%)
+                </span>
+              )}
             </div>
             <h1 className="text-xl sm:text-2xl md:text-3xl font-black text-slate-900 tracking-tight leading-snug text-balance">
               {lesson.title}
@@ -68,7 +117,7 @@ export const LessonView: React.FC<LessonViewProps> = ({
 
         {/* Đồng hồ tên lửa 25 phút */}
         <div className="w-full lg:w-80 shrink-0">
-          <RocketTimer totalMinutes={lesson.estimatedMinutes} />
+          <RocketTimer key={`${lesson.id}-${attemptKey}-timer`} totalMinutes={lesson.estimatedMinutes} />
         </div>
 
       </div>
@@ -129,6 +178,7 @@ export const LessonView: React.FC<LessonViewProps> = ({
 
         {activeTab === 'practice' && (
           <PracticeTab
+            key={`${lesson.id}-${attemptKey}-practice`}
             lesson={lesson}
             onFinishPractice={handleFinishPractice}
             onAddStar={onAddStar}
@@ -137,11 +187,14 @@ export const LessonView: React.FC<LessonViewProps> = ({
 
         {activeTab === 'finish' && (
           <FinishTab
+            key={`${lesson.id}-${attemptKey}-finish`}
             lesson={lesson}
             practiceScore={practiceScore}
-            onRestart={() => setActiveTab('guide')}
+            previousScore={previousScore}
+            onRestart={handleRestart}
             onGoHome={onGoBack}
             onAddStar={onAddStar}
+            onCompleteLesson={handleFinishLesson}
           />
         )}
       </div>

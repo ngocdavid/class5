@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Lesson } from '../../types';
+import { Lesson, LessonScoreDetail } from '../../types';
 import { KaTeXView } from '../common/KaTeXView';
 import { Trophy, CheckCircle2, RotateCcw, Home, Zap, Heart } from 'lucide-react';
 import { sounds } from '../../utils/sound';
@@ -8,17 +8,21 @@ import { triggerVictoryConfetti, triggerStarConfetti } from '../../utils/confett
 interface FinishTabProps {
   lesson: Lesson;
   practiceScore: number;
-  onRestart: () => void;
+  previousScore?: number | LessonScoreDetail;
+  onRestart: (targetTab?: 'practice' | 'guide') => void;
   onGoHome: () => void;
   onAddStar: (amount: number) => void;
+  onCompleteLesson: (practiceScore: number, speedScore: number) => void;
 }
 
 export const FinishTab: React.FC<FinishTabProps> = ({
   lesson,
   practiceScore,
+  previousScore,
   onRestart,
   onGoHome,
   onAddStar,
+  onCompleteLesson,
 }) => {
   const [speedIndex, setSpeedIndex] = useState(0);
   const [speedDone, setSpeedDone] = useState(false);
@@ -39,6 +43,30 @@ export const FinishTab: React.FC<FinishTabProps> = ({
     return arr;
   }, [currentSpeedQ?.id]);
 
+  const totalQuestions = lesson.practiceQuestions.length + speedQuestions.length;
+  const currentTotal = practiceScore + speedScore;
+  const currentPercentage = Math.round((currentTotal / (totalQuestions || 1)) * 100);
+
+  const prevTotal = typeof previousScore === 'number'
+    ? previousScore
+    : (previousScore ? previousScore.totalScore : undefined);
+  const prevQuestions = typeof previousScore === 'object'
+    ? (previousScore.totalQuestions || totalQuestions)
+    : totalQuestions;
+  const prevPercentage = typeof previousScore === 'object'
+    ? previousScore.percentage
+    : (prevTotal !== undefined ? Math.round((prevTotal / prevQuestions) * 100) : undefined);
+
+  const isImproved = prevTotal !== undefined && currentTotal > prevTotal;
+  const isRecordTied = prevTotal !== undefined && currentTotal === prevTotal;
+  const isLower = prevTotal !== undefined && currentTotal < prevTotal;
+  const isFirstTime = prevTotal === undefined;
+
+  const prevAttempts = typeof previousScore === 'object'
+    ? (previousScore.attempts || 0)
+    : (previousScore !== undefined ? 1 : 0);
+  const currentAttemptNumber = prevAttempts + 1;
+
   useEffect(() => {
     if (speedDone) {
       sounds.playVictory();
@@ -50,10 +78,11 @@ export const FinishTab: React.FC<FinishTabProps> = ({
   const handleSpeedAnswer = (opt: string) => {
     sounds.playClick();
     const isCorrect = String(opt).trim() === String(currentSpeedQ.correctAnswer).trim();
+    const nextSpeedScore = isCorrect ? speedScore + 1 : speedScore;
     if (isCorrect) {
       sounds.playCorrect();
       triggerStarConfetti();
-      setSpeedScore(prev => prev + 1);
+      setSpeedScore(nextSpeedScore);
     } else {
       sounds.playTryAgain();
     }
@@ -62,6 +91,7 @@ export const FinishTab: React.FC<FinishTabProps> = ({
       setSpeedIndex(prev => prev + 1);
     } else {
       setSpeedDone(true);
+      onCompleteLesson(practiceScore, nextSpeedScore);
     }
   };
 
@@ -130,6 +160,7 @@ export const FinishTab: React.FC<FinishTabProps> = ({
                     sounds.playCorrect();
                     triggerStarConfetti();
                     setLootOpened(true);
+                    onAddStar(25);
                   }}
                   className="px-8 py-4 rounded-3xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-black text-lg sm:text-xl shadow-chunky hover:from-purple-600 hover:to-pink-600 border-3 border-purple-400 transition transform active:translate-y-1"
                 >
@@ -151,6 +182,63 @@ export const FinishTab: React.FC<FinishTabProps> = ({
                 <span className="text-xs sm:text-sm text-slate-500 font-black block uppercase">Thử thách tốc độ</span>
                 <span className="text-2xl font-black text-slate-900">{speedScore} / {speedQuestions.length} đúng</span>
               </div>
+            </div>
+
+            {/* Khối hiển thị tổng điểm và ghi nhận thành tích */}
+            <div className="pt-2 max-w-md mx-auto space-y-2.5">
+              <div className="p-4 bg-white rounded-2xl border-2 border-amber-300 flex flex-col gap-2.5 shadow-xs text-left">
+                <div className="flex items-center justify-between text-xs sm:text-sm">
+                  <span className="font-bold text-slate-600">Số lần đã luyện tập bài này:</span>
+                  <span className="font-black text-purple-800 bg-purple-100 px-2.5 py-0.5 rounded-lg border border-purple-200 flex items-center gap-1">
+                    <RotateCcw className="w-3 h-3 text-purple-600" />
+                    <span>Lần thứ {currentAttemptNumber}</span>
+                  </span>
+                </div>
+
+                <div className="flex items-center justify-between text-xs sm:text-sm">
+                  <span className="font-bold text-slate-600">Điểm số lượt làm này:</span>
+                  <span className="font-black text-slate-900">
+                    {currentTotal} / {totalQuestions} câu đúng ({currentPercentage}%)
+                  </span>
+                </div>
+
+                <div className="flex items-center justify-between text-xs sm:text-sm pt-2 border-t border-slate-100">
+                  <span className="font-bold text-slate-600">Kỷ lục ghi nhận (cao nhất):</span>
+                  <span className="font-black text-amber-800">
+                    🏆 {isImproved ? currentTotal : (prevTotal ?? currentTotal)} / {totalQuestions} câu đúng ({isImproved ? currentPercentage : (prevPercentage ?? currentPercentage)}%)
+                  </span>
+                </div>
+              </div>
+
+              {isImproved && (
+                <div className="p-4 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-md text-center space-y-1">
+                  <div className="text-base sm:text-lg font-black flex items-center justify-center gap-2">
+                    <span>🚀</span>
+                    <span>PHÁ KỶ LỤC CỦA CHÍNH BẠN!</span>
+                  </div>
+                  <p className="text-xs sm:text-sm font-bold opacity-95">
+                    Thành tích nâng từ <strong>{prevTotal}/{totalQuestions}</strong> lên <strong>{currentTotal}/{totalQuestions}</strong>! Hệ thống đã cập nhật kỷ lục mới của bạn!
+                  </p>
+                </div>
+              )}
+
+              {isRecordTied && (
+                <div className="p-3.5 rounded-2xl bg-amber-50 text-amber-900 border-2 border-amber-300 font-black text-xs sm:text-sm text-center">
+                  ⭐ Phong độ tuyệt vời! Bạn tiếp tục đạt điểm số tối đa: <strong>{currentTotal}/{totalQuestions} ({currentPercentage}%)</strong>!
+                </div>
+              )}
+
+              {isLower && (
+                <div className="p-3.5 rounded-2xl bg-sky-50 text-sky-900 border-2 border-sky-200 text-xs sm:text-sm font-bold text-center">
+                  Lần này bạn đạt <strong>{currentTotal}/{totalQuestions}</strong>. Hệ thống vẫn lưu giữ kỷ lục cao nhất của bạn: <strong>{prevTotal}/{totalQuestions} ({prevPercentage}%)</strong>!
+                </div>
+              )}
+
+              {isFirstTime && (
+                <div className="p-3.5 rounded-2xl bg-emerald-50 text-emerald-900 border-2 border-emerald-300 font-black text-xs sm:text-sm text-center">
+                  ✨ Thành tích hoàn thành lần đầu: <strong>{currentTotal}/{totalQuestions} câu đúng ({currentPercentage}%)</strong> đã được lưu!
+                </div>
+              )}
             </div>
 
           </div>
@@ -182,12 +270,14 @@ export const FinishTab: React.FC<FinishTabProps> = ({
             <button
               onClick={() => {
                 sounds.playClick();
-                onRestart();
+                onRestart('practice');
               }}
-              className="w-full sm:w-auto px-7 py-4 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-black text-base border-2 border-slate-300 transition flex items-center justify-center gap-2.5"
+              className="w-full sm:w-auto px-7 py-4 rounded-2xl bg-amber-500 hover:bg-amber-600 text-white font-black text-base border-3 border-amber-600 shadow-chunky-sm transition flex items-center justify-center gap-2.5 transform active:translate-y-0.5"
             >
               <RotateCcw className="w-5 h-5" />
-              <span>Ôn tập lại bài này</span>
+              <span>
+                Luyện tập lần {currentAttemptNumber + 1} {currentTotal < totalQuestions ? '(nâng điểm)' : ''}
+              </span>
             </button>
 
             <button

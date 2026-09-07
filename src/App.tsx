@@ -18,7 +18,8 @@ import {
   Check, 
   Layers, 
   Trophy,
-  Filter
+  Filter,
+  RotateCcw
 } from 'lucide-react';
 import { sounds } from './utils/sound';
 
@@ -75,14 +76,71 @@ function MainApp() {
     setProgress(prev => ({ ...prev, stars: prev.stars + amount }));
   };
 
-  const markCompleted = (lessonId: string) => {
+  const markCompleted = (
+    lessonId: string,
+    practiceScore: number = 0,
+    speedScore: number = 0,
+    practiceTotal: number = 8,
+    speedTotal: number = 3
+  ) => {
     setProgress(prev => {
-      if (prev.completedLessons.includes(lessonId)) return prev;
+      const isFirstTime = !prev.completedLessons.includes(lessonId);
+      const prevData = prev.scorePerLesson[lessonId];
+      let prevTotalScore = 0;
+      let prevAttempts = 0;
+
+      if (typeof prevData === 'number') {
+        prevTotalScore = prevData;
+        prevAttempts = 1;
+      } else if (prevData && typeof prevData === 'object') {
+        prevTotalScore = prevData.totalScore || 0;
+        prevAttempts = prevData.attempts || 1;
+      }
+
+      const currentTotalScore = practiceScore + speedScore;
+      const totalQuestions = practiceTotal + speedTotal;
+
+      // Nếu lần làm lại này đạt điểm cao hơn, hoặc lần đầu tiên hoàn thành
+      const isHigher = isFirstTime || currentTotalScore > prevTotalScore;
+      const bestTotal = isHigher ? currentTotalScore : prevTotalScore;
+      const bestPractice = isHigher
+        ? practiceScore
+        : (typeof prevData === 'object' ? prevData.practiceScore : practiceScore);
+      const bestSpeed = isHigher
+        ? speedScore
+        : (typeof prevData === 'object' ? prevData.speedScore : speedScore);
+      const bestPercentage = Math.round((bestTotal / totalQuestions) * 100);
+
+      // Thưởng sao khích lệ:
+      // Lần đầu hoàn thành: 15 sao; làm lại đạt điểm cao hơn: thưởng 10 sao + 5 sao mỗi câu cải thiện
+      let bonusStars = 0;
+      if (isFirstTime) {
+        bonusStars = 15;
+      } else if (currentTotalScore > prevTotalScore) {
+        bonusStars = 10 + (currentTotalScore - prevTotalScore) * 5;
+      }
+
+      const updatedScoreDetail = {
+        practiceScore: bestPractice,
+        practiceTotal,
+        speedScore: bestSpeed,
+        speedTotal,
+        totalScore: bestTotal,
+        totalQuestions,
+        percentage: bestPercentage,
+        attempts: prevAttempts + 1,
+        lastAttemptAt: new Date().toISOString()
+      };
+
       return {
         ...prev,
-        stars: prev.stars + 15,
+        stars: prev.stars + bonusStars,
         streakDays: prev.streakDays === 0 ? 1 : prev.streakDays,
-        completedLessons: [...prev.completedLessons, lessonId]
+        completedLessons: isFirstTime ? [...prev.completedLessons, lessonId] : prev.completedLessons,
+        scorePerLesson: {
+          ...prev.scorePerLesson,
+          [lessonId]: updatedScoreDetail
+        }
       };
     });
   };
@@ -193,6 +251,7 @@ function MainApp() {
           /* Giao diện 1 Bài học chi tiết (30-45 phút) */
           <LessonView
             lesson={selectedLesson}
+            previousScore={progress.scorePerLesson[selectedLesson.id]}
             onGoBack={() => setSelectedLesson(null)}
             onAddStar={addStars}
             onCompleteLesson={markCompleted}
@@ -366,6 +425,13 @@ function MainApp() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                   {filteredLessons.map((lesson) => {
                     const isDone = progress.completedLessons.includes(lesson.id);
+                    const scoreData = progress.scorePerLesson[lesson.id];
+                    const attempts = typeof scoreData === 'object' ? (scoreData.attempts || (isDone ? 1 : 0)) : (isDone ? 1 : 0);
+                    const totalScore = typeof scoreData === 'number' ? scoreData : scoreData?.totalScore;
+                    const totalQuestions = typeof scoreData === 'object' ? (scoreData.totalQuestions || 11) : 11;
+                    const percentage = typeof scoreData === 'object'
+                      ? scoreData.percentage
+                      : (totalScore !== undefined ? Math.round((totalScore / totalQuestions) * 100) : null);
 
                     return (
                       <div
@@ -381,9 +447,29 @@ function MainApp() {
                             </span>
 
                             {isDone ? (
-                              <span className="flex items-center gap-1.5 text-xs sm:text-sm font-black text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-xl border border-emerald-300 shrink-0">
-                                <CheckCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600" /> Đã vững
-                              </span>
+                              <div className="flex items-center gap-1.5 shrink-0 flex-wrap justify-end">
+                                {attempts > 0 && (
+                                  <span className="flex items-center gap-1 text-[11px] sm:text-xs font-black px-2 py-0.5 rounded-lg bg-purple-100 text-purple-800 border border-purple-200 shrink-0" title={`Đã luyện tập ${attempts} lần`}>
+                                    <RotateCcw className="w-3 h-3 text-purple-600" />
+                                    <span>{attempts} lần</span>
+                                  </span>
+                                )}
+                                {totalScore !== undefined ? (
+                                  <span className={`flex items-center gap-1 text-xs sm:text-sm font-black px-2.5 py-1 rounded-xl border shrink-0 ${
+                                    percentage === 100
+                                      ? 'bg-amber-100 text-amber-900 border-amber-400'
+                                      : percentage && percentage >= 80
+                                      ? 'bg-emerald-100 text-emerald-900 border-emerald-300'
+                                      : 'bg-sky-100 text-sky-900 border-sky-300'
+                                  }`} title={`Kỷ lục cao nhất: ${totalScore}/${totalQuestions} câu đúng (${percentage}%)`}>
+                                    {percentage === 100 ? '🏆' : percentage && percentage >= 80 ? '⭐' : '🎯'} {totalScore}/{totalQuestions}
+                                  </span>
+                                ) : (
+                                  <span className="flex items-center gap-1.5 text-xs sm:text-sm font-black text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-xl border border-emerald-300 shrink-0">
+                                    <CheckCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600" /> Đã vững
+                                  </span>
+                                )}
+                              </div>
                             ) : (
                               <span className="flex items-center gap-1.5 text-xs sm:text-sm font-black text-amber-700 bg-amber-50 px-2.5 py-1 rounded-xl border border-amber-300 shrink-0">
                                 <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-500" /> {lesson.estimatedMinutes}p
@@ -420,10 +506,17 @@ function MainApp() {
                               : `${themeConfig.buttonPrimaryClass}`
                           }`}
                         >
-                          <span>{isDone ? 'Ôn lại bài này' : 'Bắt đầu học (25 phút)'}</span>
+                          <span>
+                            {isDone
+                              ? (totalScore !== undefined && totalScore < totalQuestions
+                                  ? `Luyện tập lần ${attempts + 1} (nâng điểm)`
+                                  : attempts > 1
+                                  ? `Luyện tập lại (${attempts} lần)`
+                                  : 'Ôn lại bài này')
+                              : 'Bắt đầu học (25 phút)'}
+                          </span>
                           <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
                         </button>
-
                       </div>
                     );
                   })}

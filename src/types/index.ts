@@ -75,9 +75,21 @@ export interface Lesson {
   speedQuestions: SpeedQuestion[];
 }
 
+export interface LessonScoreDetail {
+  practiceScore: number;
+  practiceTotal: number;
+  speedScore: number;
+  speedTotal: number;
+  totalScore: number;
+  totalQuestions: number;
+  percentage: number;
+  attempts?: number;
+  lastAttemptAt?: string;
+}
+
 export interface UserProgress {
   stars: number;
   streakDays: number;
   completedLessons: string[]; // lesson ids
-  scorePerLesson: Record<string, number>;
+  scorePerLesson: Record<string, number | LessonScoreDetail>;
 }
